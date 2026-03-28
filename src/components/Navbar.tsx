@@ -7,27 +7,28 @@ const megaMenuItems = {
   "Explore ASB": {
     sections: [
       {
-        heading: "Why Choose Us",
+        heading: "About",
         links: [
-          { label: "About ASB", path: "/about#about" },
-          { label: "Vision & Mission", path: "/about#vision-mission" },
-          { label: "Leadership Messages", path: "/about#leadership" },
+          { label: "About", path: "/about" },
+          { label: "Founder and Chairman Message", path: "/founder-and-chairman-message" },
+          { label: "Director's Message", path: "/directors-message" },
         ],
       },
       {
-        heading: "Our People",
+        heading: "Councils",
         links: [
-          { label: "Governing Council", path: "/about#governing-council" },
-          { label: "Academic Council", path: "/about#academic-council" },
+          { label: "Governing Council Members", path: "/governing-council-members" },
+          { label: "Academic Council Members", path: "/academic-council-members" },
           { label: "Our Faculty", path: "/about#faculty" },
         ],
       },
       {
-        heading: "Excellence",
+        heading: "Institutional",
         links: [
-          { label: "Research & Consulting", path: "/about#research" },
-          { label: "Campus Facilities", path: "/#campus" },
-          { label: "Awards & Recognition", path: "/#awards" },
+          { label: "AICTE Approval", path: "/about#aicte-approval" },
+          { label: "Research and Consulting", path: "/about#research-consulting" },
+          { label: "Infrastructure", path: "/about#infrastructure" },
+          { label: "Mandatory Disclosure", path: "/about#mandatory-disclosure" },
         ],
       },
     ],
@@ -57,7 +58,7 @@ const topBarLinks = [
 // Main nav items (bottom row)
 const mainNavItems = [
   { label: "Home", path: "/" },
-  { label: "About Us", megaMenu: true, megaKey: "Explore ASB" },
+  { label: "Explore ASB", megaMenu: true, megaKey: "Explore ASB" },
   {
     label: "Programs",
     children: programsChildren,
@@ -115,7 +116,7 @@ const Navbar = () => {
           </div>
           <div className="flex items-center gap-3 ml-auto">
             {/* Search */}
-            <div className="hidden md:flex items-center">
+            <div className="hidden lg:flex items-center">
               {searchOpen ? (
                 <div className="flex items-center border border-background/30 rounded-full px-3 py-1 bg-background/10">
                   <input
@@ -196,7 +197,7 @@ const Navbar = () => {
                       </div>
                       <div className="mt-4 pt-4 border-t border-border">
                         <Link to="/about" className="text-sm font-semibold text-primary hover:underline">
-                          View Full About Page →
+                          View Full Explore ASB Page →
                         </Link>
                       </div>
                     </div>
@@ -288,7 +289,7 @@ const Navbar = () => {
                       </div>
                     ))}
                     <Link to="/about" className="block px-4 py-2 text-sm font-semibold text-primary">
-                      View Full About Page →
+                      View Full Explore ASB Page →
                     </Link>
                   </div>
                 )}

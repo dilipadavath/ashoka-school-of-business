@@ -9,10 +9,10 @@ import {
 import heroAbout from "@/assets/hero-about.jpg";
 import globalImmersion from "@/assets/global-immersion.jpg";
 import hostel from "@/assets/hostel.jpg";
-import smartClassroom from "@/assets/smart-classroom.jpg";
+import smartClassroom from "@/assets/Smart Classrooms.jpg";
 import library from "@/assets/library.jpg";
 import incubation from "@/assets/incubation.jpg";
-import sportsArena from "@/assets/sports-arena.jpg";
+import sportsArena from "@/assets/campus-hub.png";
 import campusLife from "@/assets/campus-life.jpg";
 import graduation from "@/assets/graduation.jpg";
 import leadership from "@/assets/leadership.jpg";

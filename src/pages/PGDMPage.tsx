@@ -2,7 +2,7 @@ import SectionFadeIn from "@/components/SectionFadeIn";
 import ParallaxSection from "@/components/ParallaxSection";
 import { CheckCircle, FileText } from "lucide-react";
 import pgdmSeminar from "@/assets/pgdm-seminar.jpg";
-import smartClassroom from "@/assets/smart-classroom.jpg";
+import smartClassroom from "@/assets/Smart Classrooms.jpg";
 import campusAerial from "@/assets/campus-aerial.jpg";
 
 const specializations = [
