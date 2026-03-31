@@ -1,85 +1,166 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
-import ParallaxSection from "@/components/ParallaxSection";
+import { useState } from "react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import placementsImg from "@/assets/placements.jpg";
-import graduation from "@/assets/graduation.jpg";
 
-const companies = ["Cyient", "IBM", "HDFC", "Virtusa", "Capgemini", "Infosys", "TCS", "Wipro", "Deloitte", "Accenture", "HCL", "Tech Mahindra"];
+const logoModules = import.meta.glob("../assets/logos/*.{png,webp,jpg,jpeg}", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+
+const companyLogos = Object.entries(logoModules)
+  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }))
+  .map(([, src]) => src);
+
+const sections = [
+  {
+    title: "Why Choose the Top MBA Colleges in Hyderabad with Placements?",
+    paragraphs: [
+      "The top MBA colleges in Hyderabad with placements provide students with comprehensive training, industry exposure, and networking opportunities. These institutions collaborate with reputed organizations, offering students an excellent platform to launch their careers.",
+      "One of the significant factors in choosing the right business school is its ability to bridge the gap between education and employment. The MBA colleges in Hyderabad with placements focus on skill development, interview preparation, and corporate training to enhance employability. Many students from reputed institutions secure positions in leading companies, making these colleges the preferred choice.",
+    ],
+  },
+  {
+    title: "Best Placement MBA Colleges in Hyderabad",
+    paragraphs: [
+      "Among the MBA colleges in Hyderabad, institutions that emphasize placements hold a competitive edge. The best placement MBA colleges in Hyderabad have a proven track record of placing students in top companies across various industries. They offer placement assistance, career counseling, and internship opportunities to ensure students gain practical experience before entering the job market.",
+      "For those looking to specialize in business analytics, MBA business analytics colleges in Hyderabad provide tailored programs with industry-driven curricula. These colleges have tie-ups with corporate firms, top mba colleges in Hyderabad with placements, ensuring students are well-prepared to meet business challenges.",
+    ],
+  },
+  {
+    title: "Business Schools in Hyderabad with Placements",
+    paragraphs: [
+      "The demand for skilled management professionals continues to rise, making business schools in Hyderabad with placements an ideal choice. These institutions provide students with access to various industries, equipping them with relevant skills and real-world experience. A strong placement cell ensures that students get interview opportunities with leading companies.",
+      "Additionally, for students interested in finance, MBA finance colleges in Hyderabad offer specialized programs in financial management, investment banking, and fintech, increasing their employability in the banking and corporate sectors.",
+    ],
+  },
+  {
+    title: "Best Business Schools in Hyderabad with Placements",
+    paragraphs: [
+      "When it comes to selecting the best business schools in Hyderabad with placements, factors such as faculty expertise, industry partnerships, and career opportunities play a vital role. These institutions focus on developing leadership skills and business acumen, ensuring that graduates are ready to take on managerial roles in reputed firms.",
+      "For students seeking top-tier management education, MBA colleges in Hyderabad provide a structured learning environment, preparing them for the corporate world. These colleges offer high placement rates, helping students secure positions in multinational companies and emerging startups.",
+    ],
+  },
+  {
+    title: "Conclusion",
+    paragraphs: [
+      "Choosing the top MBA colleges in Hyderabad with placements, and best mba colleges in Hyderabad with placements ensures career success and financial stability. With growing competition in the job market, it is essential to select MBA colleges in Hyderabad with placements that offer industry-relevant courses and excellent recruitment support. The right institution will provide the skills, experience, and network needed to thrive in the corporate world, making it a worthwhile investment for aspiring business leaders.",
+    ],
+  },
+];
 
 const PlacementsPage = () => {
+  const [activeSection, setActiveSection] = useState("placement-section-1");
+
   return (
-    <div className="pt-20">
-      <section className="relative bg-charcoal text-primary-foreground section-padding text-center overflow-hidden">
-        <img src={placementsImg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-25" />
-        <div className="relative z-10">
+    <div className="pt-20 bg-background overflow-x-clip">
+      <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground px-4 md:px-8 py-16 md:py-24">
+        <img src={placementsImg} alt="Placements at ASB" className="absolute inset-0 w-full h-full object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-br from-charcoal/95 via-charcoal/85 to-primary/40" />
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-primary/30 blur-3xl" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
+        </div>
+
+        <div className="container-wide relative z-10 px-4">
           <SectionFadeIn>
-            <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Placements</p>
-            <h1 className="text-3xl md:text-5xl font-black mb-4">Recruiters of ASB</h1>
-            <p className="text-primary-foreground/50 text-sm">Home → Top Placements MBA College in Hyderabad</p>
+            <p className="text-primary font-semibold text-sm uppercase tracking-[0.24em] mb-3">Placements</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95]">RECRUITERS OF ASB</h1>
+            <p className="mt-5 text-primary-foreground/75 max-w-3xl text-base md:text-lg leading-relaxed">
+              When choosing a management institute, placement opportunities play a crucial role in decision-making.
+              Finding the top MBA colleges in Hyderabad with placements ensures a successful career path with lucrative
+              job offers. Among the many MBA colleges in Hyderabad with placements, it is essential to select an
+              institution that provides a strong industry connection, practical learning, and top-tier recruiters.
+            </p>
           </SectionFadeIn>
         </div>
       </section>
 
-      <section className="section-padding bg-background">
-        <div className="container-wide">
+      <section className="px-4 md:px-8 py-14 md:py-16 bg-gradient-to-b from-secondary/35 to-background">
+        <div className="container-wide px-4">
           <SectionFadeIn>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Our Recruiting Partners</h2>
-              <p className="text-muted-foreground">Leading companies trust ASB graduates for their talent and business acumen.</p>
+            <div className="rounded-[1.8rem] border border-border/60 bg-background px-4 py-8 md:px-6 shadow-[0_22px_60px_rgba(15,23,42,0.08)] overflow-hidden">
+              <div className="text-center mb-6">
+                <p className="text-primary font-semibold text-xs uppercase tracking-[0.22em] mb-2">Recruiters</p>
+                <h2 className="text-2xl md:text-3xl font-black text-foreground">Companies That Hire From ASB</h2>
+              </div>
+
+              <div className="relative">
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-10 md:w-14 bg-gradient-to-r from-background to-transparent z-10" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-10 md:w-14 bg-gradient-to-l from-background to-transparent z-10" />
+
+                <div
+                  className="flex gap-4 overflow-x-auto pb-2 px-1 snap-x snap-mandatory scrollbar-hide"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                >
+                  {companyLogos.map((logo, i) => (
+                    <div
+                      key={`logo-${i}`}
+                      className="snap-start shrink-0 h-16 w-32 md:h-20 md:w-40 rounded-xl border border-border/60 bg-white shadow-sm flex items-center justify-center p-3"
+                    >
+                      <img src={logo} alt={`Recruiter logo ${i + 1}`} className="max-h-14 md:max-h-16 w-auto object-contain" loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </SectionFadeIn>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {companies.map((company, i) => (
-              <SectionFadeIn key={company} delay={i * 0.05}>
-                <div className="aspect-square flex items-center justify-center border-2 border-primary/20 rounded-xl hover:border-primary hover:shadow-md transition-all bg-background">
-                  <span className="font-display font-bold text-foreground text-lg">{company}</span>
-                </div>
-              </SectionFadeIn>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* Parallax */}
-      <ParallaxSection bgImage={graduation} className="py-20 md:py-28">
-        <div className="text-center px-4">
+      <section className="px-4 md:px-8 pb-16 md:pb-20">
+        <div className="container-wide px-4 grid gap-8 lg:grid-cols-[280px_1fr] items-start">
           <SectionFadeIn>
-            <h2 className="text-3xl md:text-5xl font-black text-primary-foreground mb-4">Your Career Starts Here</h2>
-            <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">95% placement rate with top companies across industries.</p>
-          </SectionFadeIn>
-        </div>
-      </ParallaxSection>
-
-      {/* Stats */}
-      <section className="section-padding bg-secondary">
-        <div className="container-wide">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: "100+", label: "Recruiting Partners" },
-              { value: "95%", label: "Placement Rate" },
-              { value: "8 LPA", label: "Highest Package" },
-              { value: "500+", label: "Students Placed" },
-            ].map((stat, i) => (
-              <SectionFadeIn key={stat.label} delay={i * 0.1}>
-                <div>
-                  <p className="text-3xl md:text-4xl font-black text-primary">{stat.value}</p>
-                  <p className="text-muted-foreground text-sm mt-1">{stat.label}</p>
-                </div>
-              </SectionFadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Marquee */}
-      <section className="py-12 bg-background overflow-hidden">
-        <div className="relative">
-          <div className="flex animate-marquee gap-8">
-            {[...companies, ...companies].map((name, i) => (
-              <div key={i} className="shrink-0 px-8 py-4 bg-secondary rounded-lg border border-border min-w-[160px] text-center">
-                <span className="font-display font-bold text-foreground">{name}</span>
+            <aside className="lg:sticky lg:top-28 rounded-2xl border border-border bg-secondary/40 p-5">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-primary mb-4">On This Page</p>
+              <div className="space-y-2">
+                {sections.map((section, index) => (
+                  <button
+                    key={section.title}
+                    type="button"
+                    onClick={() => setActiveSection(`placement-section-${index + 1}`)}
+                    className={`block w-full text-left rounded-lg border px-3 py-2 text-sm font-semibold transition-colors ${
+                      activeSection === `placement-section-${index + 1}`
+                        ? "border-primary/60 bg-primary/10 text-primary"
+                        : "border-border/70 bg-background text-foreground hover:border-primary/50 hover:text-primary"
+                    }`}
+                  >
+                    {section.title}
+                  </button>
+                ))}
               </div>
-            ))}
-          </div>
+            </aside>
+          </SectionFadeIn>
+
+          <SectionFadeIn>
+            <Accordion type="single" collapsible value={activeSection} onValueChange={(value) => value && setActiveSection(value)} className="space-y-5">
+              {sections.map((section, index) => (
+                <AccordionItem
+                  key={section.title}
+                  value={`placement-section-${index + 1}`}
+                  className="rounded-[1.4rem] border border-border bg-background px-6 md:px-8 py-1 shadow-[0_8px_30px_rgba(15,23,42,0.06)]"
+                >
+                  <AccordionTrigger className="py-5 hover:no-underline">
+                    <div className="flex items-start gap-4 text-left">
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-black">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="text-2xl md:text-[1.75rem] font-black text-foreground leading-tight">{section.title}</h3>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-6 pt-0">
+                    <div className="space-y-4">
+                      {section.paragraphs.map((paragraph) => (
+                        <p key={paragraph} className="text-base md:text-[1.05rem] leading-relaxed text-muted-foreground">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </SectionFadeIn>
         </div>
       </section>
     </div>

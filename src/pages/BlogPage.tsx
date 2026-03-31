@@ -114,7 +114,7 @@ const BlogPage = () => {
                   <Link to="/pgdm/finance-fintech" className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors">
                     Explore Program
                   </Link>
-                  <Link to="/contact" className="px-6 py-3 border border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-colors">
+                  <Link to="/contact-us" className="px-6 py-3 border border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-colors">
                     Apply Now
                   </Link>
                 </div>

@@ -314,7 +314,7 @@ const BBAPage = () => {
         <div className="text-center px-4">
           <SectionFadeIn>
             <h2 className="text-3xl font-bold text-primary-foreground mb-6">Ready to Begin Your Journey?</h2>
-            <Link to="/contact" className="inline-block px-8 py-4 bg-primary-foreground text-primary font-bold rounded-lg hover:bg-primary-foreground/90 transition-colors">
+            <Link to="/contact-us" className="inline-block px-8 py-4 bg-primary-foreground text-primary font-bold rounded-lg hover:bg-primary-foreground/90 transition-colors">
               Apply Now
             </Link>
           </SectionFadeIn>

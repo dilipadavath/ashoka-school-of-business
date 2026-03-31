@@ -1,10 +1,10 @@
 import { Phone, MessageCircle, CreditCard, FileEdit, HelpCircle } from "lucide-react";
 
 const sideButtons = [
-  { icon: CreditCard, label: "Pay Fee", href: "/contact", color: "bg-primary" },
-  { icon: FileEdit, label: "Apply", href: "/contact", color: "bg-primary" },
+  { icon: CreditCard, label: "Pay Fee", href: "/contact-us", color: "bg-primary" },
+  { icon: FileEdit, label: "Apply", href: "/contact-us", color: "bg-primary" },
   { icon: MessageCircle, label: "Chat", href: "https://wa.me/917207939930", external: true, color: "bg-primary" },
-  { icon: HelpCircle, label: "Enquire", href: "/contact", color: "bg-primary" },
+  { icon: HelpCircle, label: "Enquire", href: "/contact-us", color: "bg-primary" },
 ];
 
 const FloatingButtons = () => (

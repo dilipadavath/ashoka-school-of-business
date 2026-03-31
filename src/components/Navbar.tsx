@@ -19,16 +19,36 @@ const megaMenuItems = {
         links: [
           { label: "Governing Council Members", path: "/governing-council-members" },
           { label: "Academic Council Members", path: "/academic-council-members" },
-          { label: "Our Faculty", path: "/about#faculty" },
+          { label: "Our Faculty", path: "/our-faculty" },
         ],
       },
       {
         heading: "Institutional",
         links: [
           { label: "AICTE Approval", path: "/about#aicte-approval" },
-          { label: "Research and Consulting", path: "/about#research-consulting" },
-          { label: "Infrastructure", path: "/about#infrastructure" },
+          { label: "Research and Consulting", path: "/research-and-consulting" },
+          { label: "Infrastructure", path: "/infrastructure" },
           { label: "Mandatory Disclosure", path: "/about#mandatory-disclosure" },
+        ],
+      },
+    ],
+  },
+  Grievance: {
+    sections: [
+      {
+        heading: "",
+        links: [
+          { label: "Grievance Redressal Committee", path: "/grievance-redressal-committee" },
+          { label: "Internal Complaint Committee", path: "/internal-complaint-committee" },
+          { label: "Internal Quality Assurance Cell", path: "/internal-quality-assurance-cell" },
+          { label: "Women Protection Cell", path: "/women-protection-cell" },
+        ],
+      },
+      {
+        heading: "",
+        links: [
+          { label: "Anti-Discrimination Committee", path: "/anti-discrimination-committee" },
+          { label: "Anti Ragging Committee", path: "/anti-ragging-committee" },
         ],
       },
     ],
@@ -36,23 +56,21 @@ const megaMenuItems = {
 };
 
 const programsChildren = [
-  { label: "BBA Program", path: "/bba" },
-  { label: "PGDM Overview", path: "/pgdm" },
-  { label: "PGDM – Securities Markets", path: "/pgdm/securities-markets" },
-  { label: "PGDM – AI & Data Science", path: "/pgdm/ai-data-science" },
-  { label: "PGDM – Marketing with Analytics", path: "/pgdm/marketing-analytics" },
-  { label: "PGDM – Finance with FinTech", path: "/pgdm/finance-fintech" },
-  { label: "PGDM – HR with HR Analytics", path: "/pgdm/hr-analytics" },
-  { label: "PGDM – Agri-Business Management", path: "/pgdm/agri-business" },
+  { label: "PGDM – Securities Market", path: "/qms" },
+  { label: "PGDM – Artificial Intelligence & Data Science", path: "/pgdm-artificial-intelligence-data-science-colleges-in-hyderabad" },
+  { label: "PGDM – Marketing with Analytics", path: "/pgdm-marketing-business-analytics-colleges-in-hyderabad" },
+  { label: "PGDM – Finance with Fintech", path: "/pgdm-mba-finance-with-fintech-colleges-in-hyderabad" },
+  { label: "PGDM – HR with HR Analytics", path: "/pgdm-hr-management-with-analytics-courses-in-hyderabad" },
+  { label: "PGDM – Agri-Business Management", path: "/pgdm-agri-business-management" },
 ];
 
 // Top bar links
 const topBarLinks = [
-  { label: "Campus Visit", path: "/contact" },
+  { label: "Campus Visit", path: "/contact-us" },
   { label: "Blog", path: "/blog" },
-  { label: "Careers", path: "/contact" },
+  { label: "Careers", path: "/faculty-openings" },
   { label: "News & Events", path: "/news-events" },
-  { label: "Contact Us", path: "/contact" },
+  { label: "Contact Us", path: "/contact-us" },
 ];
 
 // Main nav items (bottom row)
@@ -60,19 +78,25 @@ const mainNavItems = [
   { label: "Home", path: "/" },
   { label: "Explore ASB", megaMenu: true, megaKey: "Explore ASB" },
   {
+    label: "Why ASB",
+    children: [
+      { label: "GIP", path: "/gip" },
+      { label: "EIR", path: "/eir" },
+      { label: "REACH", path: "/reach" },
+      { label: "PATH", path: "/path" },
+      { label: "Infosys Springboard", path: "/infosys-springboard" },
+      { label: "CESIM", path: "/cesim" },
+      { label: "AAROHAN-2025", path: "/aarohan-2025" },
+      { label: "Life at ASB", path: "/life-at-asb" },
+    ],
+  },
+  {
     label: "Programs",
     children: programsChildren,
   },
-  {
-    label: "Why ASB",
-    children: [
-      { label: "10-Dimensional Learning", path: "/bba#dimensions" },
-      { label: "Entrepreneurship Ecosystem", path: "/bba#entrepreneurship" },
-      { label: "Industry Experts", path: "/bba#experts" },
-    ],
-  },
-  { label: "Placements", path: "/placements" },
-  { label: "Campus Life", path: "/#campus" },
+  { label: "Placements", path: "/best-placements-mba-colleges-in-hyderabad" },
+  { label: "Admissions", path: "/admissions-for-mba-in-hyderabad" },
+  { label: "Grievance", megaMenu: true, megaKey: "Grievance" },
 ];
 
 const Navbar = () => {
@@ -81,6 +105,27 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
+
+  const currentPath = location.pathname;
+
+  const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/";
+
+  const isPathActive = (path: string) => {
+    const target = normalizePath(path);
+    const current = normalizePath(currentPath);
+    if (target === "/") return current === "/";
+    return current === target || current.startsWith(`${target}/`);
+  };
+
+  const isParentItemActive = (item: any) => {
+    if (item.path) return isPathActive(item.path);
+    if (item.children) return item.children.some((child: any) => isPathActive(child.path));
+    if (item.megaMenu) {
+      const sections = megaMenuItems[item.megaKey as keyof typeof megaMenuItems]?.sections ?? [];
+      return sections.some((section) => section.links.some((link) => isPathActive(link.path.split("#")[0] || link.path)));
+    }
+    return false;
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -140,7 +185,7 @@ const Navbar = () => {
               )}
             </div>
             <Link
-              to="/contact"
+              to="/contact-us"
               className="px-4 py-1.5 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider rounded-full hover:bg-primary/90 transition-colors"
             >
               Apply Now
@@ -171,22 +216,38 @@ const Navbar = () => {
                   onMouseEnter={() => setOpenDropdown(item.label)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-foreground hover:text-primary transition-colors">
+                  <button
+                    className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors ${
+                      isParentItemActive(item) ? "text-primary" : "text-foreground hover:text-primary"
+                    }`}
+                  >
                     {item.label}
                     <ChevronDown className="h-3.5 w-3.5" />
                   </button>
                   {openDropdown === item.label && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 bg-background border border-border rounded-xl shadow-xl py-6 px-8 min-w-[600px]">
-                      <div className="grid grid-cols-3 gap-6">
+                    <div
+                      className={`absolute top-full bg-background border border-border rounded-xl shadow-xl py-6 px-8 ${
+                        (item as any).megaKey === "Grievance"
+                          ? "right-0 min-w-[620px]"
+                          : "left-1/2 -translate-x-1/2 min-w-[600px]"
+                      }`}
+                    >
+                      <div className={`grid gap-6 ${(item as any).megaKey === "Grievance" ? "grid-cols-2" : "grid-cols-3"}`}>
                         {megaMenuItems[(item as any).megaKey as keyof typeof megaMenuItems]?.sections.map((section) => (
                           <div key={section.heading}>
-                            <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">{section.heading}</p>
+                            {section.heading ? (
+                              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">{section.heading}</p>
+                            ) : null}
                             <div className="space-y-1">
                               {section.links.map((link) => (
                                 <Link
                                   key={link.label}
                                   to={link.path}
-                                  className="block px-3 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary rounded-lg transition-colors"
+                                  className={`block px-3 py-2 text-sm rounded-lg transition-colors ${
+                                    isPathActive(link.path.split("#")[0] || link.path)
+                                      ? "bg-secondary text-primary"
+                                      : "text-foreground hover:bg-secondary hover:text-primary"
+                                  }`}
                                 >
                                   {link.label}
                                 </Link>
@@ -195,11 +256,13 @@ const Navbar = () => {
                           </div>
                         ))}
                       </div>
-                      <div className="mt-4 pt-4 border-t border-border">
-                        <Link to="/about" className="text-sm font-semibold text-primary hover:underline">
-                          View Full Explore ASB Page →
-                        </Link>
-                      </div>
+                      {(item as any).megaKey === "Explore ASB" ? (
+                        <div className="mt-4 pt-4 border-t border-border">
+                          <Link to="/about" className="text-sm font-semibold text-primary hover:underline">
+                            View Full Explore ASB Page →
+                          </Link>
+                        </div>
+                      ) : null}
                     </div>
                   )}
                 </div>
@@ -210,17 +273,29 @@ const Navbar = () => {
                   onMouseEnter={() => setOpenDropdown(item.label)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-foreground hover:text-primary transition-colors">
+                  <button
+                    className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors ${
+                      isParentItemActive(item) ? "text-primary" : "text-foreground hover:text-primary"
+                    }`}
+                  >
                     {item.label}
                     <ChevronDown className="h-3.5 w-3.5" />
                   </button>
                   {openDropdown === item.label && (
-                    <div className="absolute top-full left-0 bg-background border border-border rounded-lg shadow-lg py-2 min-w-[260px]">
+                    <div
+                      className={`absolute top-full bg-background border border-border rounded-lg shadow-lg py-2 min-w-[260px] ${
+                        item.label === "Grievance" ? "right-0" : "left-0"
+                      }`}
+                    >
                       {(item as any).children.map((child: any) => (
                         <Link
                           key={child.label}
                           to={child.path}
-                          className="block px-4 py-2.5 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                          className={`block px-4 py-2.5 text-sm transition-colors ${
+                            isPathActive(child.path)
+                              ? "bg-secondary text-primary"
+                              : "text-foreground hover:bg-secondary hover:text-primary"
+                          }`}
                         >
                           {child.label}
                         </Link>
@@ -232,7 +307,9 @@ const Navbar = () => {
                 <Link
                   key={item.label}
                   to={item.path!}
-                  className="px-3 py-2 text-sm font-semibold text-foreground hover:text-primary transition-colors"
+                  className={`px-3 py-2 text-sm font-semibold transition-colors ${
+                    isPathActive(item.path!) ? "text-primary" : "text-foreground hover:text-primary"
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -271,7 +348,9 @@ const Navbar = () => {
               <div key={item.label}>
                 <button
                   onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
-                  className="flex items-center justify-between w-full px-6 py-3 text-sm font-medium text-foreground"
+                  className={`flex items-center justify-between w-full px-6 py-3 text-sm font-medium ${
+                    isParentItemActive(item) ? "text-primary" : "text-foreground"
+                  }`}
                 >
                   {item.label}
                   <ChevronDown className={`h-4 w-4 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`} />
@@ -280,17 +359,29 @@ const Navbar = () => {
                   <div className="bg-secondary px-6 py-4 space-y-4">
                     {megaMenuItems[(item as any).megaKey as keyof typeof megaMenuItems]?.sections.map((section) => (
                       <div key={section.heading}>
-                        <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">{section.heading}</p>
+                        {section.heading ? (
+                          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">{section.heading}</p>
+                        ) : null}
                         {section.links.map((link) => (
-                          <Link key={link.label} to={link.path} className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary">
+                          <Link
+                            key={link.label}
+                            to={link.path}
+                            className={`block px-4 py-2 text-sm ${
+                              isPathActive(link.path.split("#")[0] || link.path)
+                                ? "text-primary"
+                                : "text-muted-foreground hover:text-primary"
+                            }`}
+                          >
                             {link.label}
                           </Link>
                         ))}
                       </div>
                     ))}
-                    <Link to="/about" className="block px-4 py-2 text-sm font-semibold text-primary">
-                      View Full Explore ASB Page →
-                    </Link>
+                    {(item as any).megaKey === "Explore ASB" ? (
+                      <Link to="/about" className="block px-4 py-2 text-sm font-semibold text-primary">
+                        View Full Explore ASB Page →
+                      </Link>
+                    ) : null}
                   </div>
                 )}
               </div>
@@ -298,7 +389,9 @@ const Navbar = () => {
               <div key={item.label}>
                 <button
                   onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
-                  className="flex items-center justify-between w-full px-6 py-3 text-sm font-medium text-foreground"
+                  className={`flex items-center justify-between w-full px-6 py-3 text-sm font-medium ${
+                    isParentItemActive(item) ? "text-primary" : "text-foreground"
+                  }`}
                 >
                   {item.label}
                   <ChevronDown className={`h-4 w-4 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`} />
@@ -306,7 +399,13 @@ const Navbar = () => {
                 {openDropdown === item.label && (
                   <div className="bg-secondary">
                     {(item as any).children.map((child: any) => (
-                      <Link key={child.label} to={child.path} className="block px-10 py-2.5 text-sm text-muted-foreground hover:text-primary">
+                      <Link
+                        key={child.label}
+                        to={child.path}
+                        className={`block px-10 py-2.5 text-sm ${
+                          isPathActive(child.path) ? "text-primary" : "text-muted-foreground hover:text-primary"
+                        }`}
+                      >
                         {child.label}
                       </Link>
                     ))}
@@ -314,13 +413,19 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              <Link key={item.label} to={item.path!} className="block px-6 py-3 text-sm font-medium text-foreground hover:text-primary">
+              <Link
+                key={item.label}
+                to={item.path!}
+                className={`block px-6 py-3 text-sm font-medium ${
+                  isPathActive(item.path!) ? "text-primary" : "text-foreground hover:text-primary"
+                }`}
+              >
                 {item.label}
               </Link>
             )
           )}
           <div className="p-4">
-            <Link to="/contact" className="block w-full text-center px-5 py-3 bg-primary text-primary-foreground font-semibold rounded-lg">
+            <Link to="/contact-us" className="block w-full text-center px-5 py-3 bg-primary text-primary-foreground font-semibold rounded-lg">
               Apply Now
             </Link>
           </div>

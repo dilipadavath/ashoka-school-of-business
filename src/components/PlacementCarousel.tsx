@@ -289,7 +289,7 @@ const PlacementCarousel = () => {
           >
             {placementPhotos.map((photo, i) => (
               <Link
-                to="/placements"
+                to="/best-placements-mba-colleges-in-hyderabad"
                 key={i}
                 className="snap-start shrink-0 w-[260px] md:w-[280px] group"
               >
@@ -543,7 +543,7 @@ const PlacementCarousel = () => {
                   Exposure to various companies, clubs and activities that encourage responsible positions during these extra-curricular activities help the students to take up highly recognized corporate positions. Along with Top companies in India, students also receive interview opportunities with companies abroad. Our placement services not only facilitate employment but overall grooming for long term success.
                 </p>
                 <Link
-                  to="/placements"
+                  to="/best-placements-mba-colleges-in-hyderabad"
                   className="inline-flex items-center rounded-md bg-primary px-7 py-3 text-sm font-bold uppercase tracking-[0.16em] text-primary-foreground shadow-lg shadow-primary/30 transition-colors hover:bg-primary/90"
                 >
                   Know More

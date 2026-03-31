@@ -55,7 +55,7 @@ const Index = () => {
               Explore Programs
             </Link>
             <Link
-              to="/contact"
+              to="/contact-us"
               className="px-8 py-4 border-2 border-primary-foreground text-primary-foreground font-semibold rounded-lg text-lg hover:bg-primary-foreground/10 transition-colors"
             >
               Apply Now
@@ -183,7 +183,7 @@ const Index = () => {
           <SectionFadeIn>
             <h2 className="text-3xl md:text-5xl font-black text-primary-foreground mb-4">Shape Your Tomorrow</h2>
             <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto mb-8">Join the ranks of successful alumni making an impact across industries worldwide.</p>
-            <Link to="/contact" className="px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg text-lg hover:bg-primary/90 transition-colors inline-block">
+            <Link to="/contact-us" className="px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg text-lg hover:bg-primary/90 transition-colors inline-block">
               Start Your Journey
             </Link>
           </SectionFadeIn>
