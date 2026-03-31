@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import badge from "@/assets/badge.webp";
 
 const Footer = () => (
   <footer className="bg-charcoal text-secondary">
@@ -7,10 +8,20 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_0.85fr_1.25fr_1fr] gap-8">
         <div>
           <h3 className="text-lg font-bold mb-4">Ashoka School of Business</h3>
+          <div className="mb-4 inline-flex items-center gap-3 rounded-full border border-secondary/15 bg-secondary/5 px-3 py-2">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary/75">Approved by AICTE</span>
+            <img src={badge} alt="Approved by badge" className="h-10 w-auto rounded-full object-contain" />
+          </div>
           <div className="space-y-3 text-sm text-secondary/70">
             <p className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 shrink-0" />Malkapur, Yadadri Bhuvanagiri, Telangana 508252</p>
-            <a href="mailto:info@theasb.in" className="flex items-center gap-2 hover:text-primary transition-colors"><Mail className="h-4 w-4 shrink-0" />info@theasb.in</a>
-            <a href="tel:+917207939930" className="flex items-center gap-2 hover:text-primary transition-colors"><Phone className="h-4 w-4 shrink-0" />+91 72079 39930</a>
+            <div className="flex items-center gap-2">
+              <Mail className="h-4 w-4 shrink-0" />
+              <a href="mailto:info@theasb.in" className="hover:text-primary transition-colors">info@theasb.in</a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone className="h-4 w-4 shrink-0" />
+              <a href="tel:+917207939930" className="hover:text-primary transition-colors">+91 72079 39930</a>
+            </div>
           </div>
         </div>
         <div>

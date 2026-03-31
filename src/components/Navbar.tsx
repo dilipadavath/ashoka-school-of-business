@@ -66,7 +66,7 @@ const programsChildren = [
 
 // Top bar links
 const topBarLinks = [
-  { label: "Campus Visit", path: "/contact-us" },
+  { label: "Campus Visit", path: "/infrastructure" },
   { label: "Blog", path: "/blog" },
   { label: "Careers", path: "/faculty-openings" },
   { label: "News & Events", path: "/news-events" },

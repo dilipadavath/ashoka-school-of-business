@@ -108,14 +108,33 @@ const EnquiryNowPage = () => {
         <SectionFadeIn className="w-full max-w-[800px]">
           <div className="w-full">
             {/* Header */}
-            <div className="relative overflow-hidden rounded-t-3xl bg-[radial-gradient(circle_at_20%_20%,rgba(220,38,38,0.24),transparent_46%),radial-gradient(circle_at_80%_0%,rgba(2,132,199,0.24),transparent_38%),linear-gradient(145deg,#0f172a,#1e293b)] px-8 py-10 text-center text-white">
+            <div className="relative overflow-hidden rounded-t-3xl bg-[radial-gradient(circle_at_20%_20%,rgba(220,38,38,0.28),transparent_42%),radial-gradient(circle_at_82%_6%,rgba(14,165,233,0.22),transparent_34%),linear-gradient(145deg,#0f172a,#172554_52%,#111827)] px-6 py-8 text-center text-white md:px-8 md:py-10">
               <div className="pointer-events-none absolute inset-0">
-                <div className="absolute -top-16 right-8 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
-                <div className="absolute -bottom-16 left-6 h-36 w-36 rounded-full bg-sky-400/15 blur-3xl" />
+                <div className="absolute -top-16 right-8 h-40 w-40 rounded-full bg-primary/25 blur-3xl" />
+                <div className="absolute -bottom-16 left-6 h-36 w-36 rounded-full bg-sky-400/20 blur-3xl" />
+                <div className="absolute left-0 top-0 h-full w-full bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.08)_18%,transparent_36%,transparent_100%)]" />
+                <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:28px_28px]" />
+                <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 opacity-60" />
+                <div className="absolute right-10 top-10 h-24 w-24 rounded-full border border-white/10" />
+                <div className="absolute bottom-6 left-8 h-16 w-16 rounded-full border border-white/10" />
+                <div className="absolute left-10 top-14 h-20 w-20 rotate-12 rounded-3xl border border-white/10 bg-white/5" />
+                <div className="absolute bottom-10 right-12 h-14 w-14 rounded-full border border-amber-200/20 bg-amber-200/10" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/80 to-transparent" />
               </div>
               <div className="relative z-10">
+                <div className="mx-auto mb-6 grid max-w-[440px] grid-cols-1 gap-2 text-left sm:grid-cols-2">
+                  <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-sm">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/60">Admissions</p>
+                    <p className="mt-1 text-sm font-bold text-white">Open for 2026</p>
+                  </div>
+                  <div className="rounded-2xl border border-amber-300/25 bg-amber-300/12 px-4 py-3 backdrop-blur-sm">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-amber-100/70">Availability</p>
+                    <p className="mt-1 text-sm font-bold text-amber-100">Few Slots Left</p>
+                  </div>
+                </div>
                 <h1 className="text-2xl md:text-3xl font-black tracking-tight">Enquire Now</h1>
-                <p className="mt-2 text-sm text-white/70">Applications Open For 2026 – 2028 · PGDM</p>
+                <p className="mt-2 text-sm text-white/75">Applications Open For 2026 – 2028 · PGDM</p>
               </div>
             </div>
 
