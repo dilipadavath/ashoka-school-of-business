@@ -1,5 +1,6 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import placementsImg from "@/assets/placements.jpg";
 
@@ -52,6 +53,47 @@ const sections = [
 const PlacementsPage = () => {
   const [activeSection, setActiveSection] = useState("placement-section-1");
 
+  const logosScrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLogosLeft, setCanScrollLogosLeft] = useState(false);
+  const [canScrollLogosRight, setCanScrollLogosRight] = useState(true);
+  const [isLogosHovered, setIsLogosHovered] = useState(false);
+
+  const checkLogosScroll = () => {
+    const el = logosScrollRef.current;
+    if (!el) return;
+    setCanScrollLogosLeft(el.scrollLeft > 10);
+    setCanScrollLogosRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
+  useEffect(() => {
+    const el = logosScrollRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", checkLogosScroll);
+    checkLogosScroll();
+    return () => el.removeEventListener("scroll", checkLogosScroll);
+  }, []);
+
+  const scrollLogos = (dir: "left" | "right") => {
+    const el = logosScrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir === "left" ? -(el.clientWidth * 0.8) : el.clientWidth * 0.8, behavior: "smooth" });
+  };
+
+  // Auto-scroll — logos
+  useEffect(() => {
+    if (isLogosHovered) return;
+    const interval = setInterval(() => {
+      const el = logosScrollRef.current;
+      if (!el) return;
+      if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: 200, behavior: "smooth" });
+      }
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [isLogosHovered]);
+
   return (
     <div className="pt-20 bg-background overflow-x-clip">
       <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground px-4 md:px-8 py-16 md:py-24">
@@ -76,6 +118,7 @@ const PlacementsPage = () => {
         </div>
       </section>
 
+      {/* ── Recruiters / Company Logos ── */}
       <section className="px-4 md:px-8 py-14 md:py-16 bg-gradient-to-b from-secondary/35 to-background">
         <div className="container-wide px-4">
           <SectionFadeIn>
@@ -89,7 +132,29 @@ const PlacementsPage = () => {
                 <div className="pointer-events-none absolute inset-y-0 left-0 w-10 md:w-14 bg-gradient-to-r from-background to-transparent z-10" />
                 <div className="pointer-events-none absolute inset-y-0 right-0 w-10 md:w-14 bg-gradient-to-l from-background to-transparent z-10" />
 
+                {canScrollLogosLeft && (
+                  <button
+                    onClick={() => scrollLogos("left")}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur-sm border border-border rounded-full p-2 shadow-lg hover:bg-primary hover:text-primary-foreground transition-colors"
+                    aria-label="Scroll recruiters left"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                )}
+                {canScrollLogosRight && (
+                  <button
+                    onClick={() => scrollLogos("right")}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur-sm border border-border rounded-full p-2 shadow-lg hover:bg-primary hover:text-primary-foreground transition-colors"
+                    aria-label="Scroll recruiters right"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                )}
+
                 <div
+                  ref={logosScrollRef}
+                  onMouseEnter={() => setIsLogosHovered(true)}
+                  onMouseLeave={() => setIsLogosHovered(false)}
                   className="flex gap-4 overflow-x-auto pb-2 px-1 snap-x snap-mandatory scrollbar-hide"
                   style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >

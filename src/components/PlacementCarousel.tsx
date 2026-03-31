@@ -155,16 +155,23 @@ const testimonials = [
 const PlacementCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const eventsScrollRef = useRef<HTMLDivElement>(null);
+  const logosScrollRef = useRef<HTMLDivElement>(null);
+  const testimonialsScrollRef = useRef<HTMLDivElement>(null);
+
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [canScrollEventsLeft, setCanScrollEventsLeft] = useState(false);
   const [canScrollEventsRight, setCanScrollEventsRight] = useState(true);
-  const [isCarouselHovered, setIsCarouselHovered] = useState(false);
-  const testimonialsScrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLogosLeft, setCanScrollLogosLeft] = useState(false);
+  const [canScrollLogosRight, setCanScrollLogosRight] = useState(true);
   const [canScrollTestimonialsLeft, setCanScrollTestimonialsLeft] = useState(false);
   const [canScrollTestimonialsRight, setCanScrollTestimonialsRight] = useState(true);
+
+  const [isCarouselHovered, setIsCarouselHovered] = useState(false);
+  const [isLogosHovered, setIsLogosHovered] = useState(false);
   const [expandedTestimonials, setExpandedTestimonials] = useState<Record<number, boolean>>({});
 
+  // ── Placement photos scroll ──────────────────────────────────────────────
   const checkScroll = () => {
     const el = scrollRef.current;
     if (!el) return;
@@ -183,28 +190,12 @@ const PlacementCarousel = () => {
   const scroll = (dir: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
-    const amount = el.clientWidth * 0.8;
-    el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
+    el.scrollBy({ left: dir === "left" ? -(el.clientWidth * 0.8) : el.clientWidth * 0.8, behavior: "smooth" });
   };
 
-  const checkEventsScroll = () => {
-    const el = eventsScrollRef.current;
-    if (!el) return;
-    setCanScrollEventsLeft(el.scrollLeft > 10);
-    setCanScrollEventsRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-  };
-
-  const scrollEvents = (dir: "left" | "right") => {
-    const el = eventsScrollRef.current;
-    if (!el) return;
-    const amount = el.clientWidth * 0.9;
-    el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
-  };
-
-  // Auto-scroll
+  // Auto-scroll — placement photos
   useEffect(() => {
     if (isCarouselHovered) return;
-
     const interval = setInterval(() => {
       const el = scrollRef.current;
       if (!el) return;
@@ -217,6 +208,51 @@ const PlacementCarousel = () => {
     return () => clearInterval(interval);
   }, [isCarouselHovered]);
 
+  // ── Recruiters / Logos scroll ────────────────────────────────────────────
+  const checkLogosScroll = () => {
+    const el = logosScrollRef.current;
+    if (!el) return;
+    setCanScrollLogosLeft(el.scrollLeft > 10);
+    setCanScrollLogosRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
+  useEffect(() => {
+    const el = logosScrollRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", checkLogosScroll);
+    checkLogosScroll();
+    return () => el.removeEventListener("scroll", checkLogosScroll);
+  }, []);
+
+  const scrollLogos = (dir: "left" | "right") => {
+    const el = logosScrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir === "left" ? -(el.clientWidth * 0.8) : el.clientWidth * 0.8, behavior: "smooth" });
+  };
+
+  // Auto-scroll — logos
+  useEffect(() => {
+    if (isLogosHovered) return;
+    const interval = setInterval(() => {
+      const el = logosScrollRef.current;
+      if (!el) return;
+      if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: 200, behavior: "smooth" });
+      }
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [isLogosHovered]);
+
+  // ── Guest events scroll ──────────────────────────────────────────────────
+  const checkEventsScroll = () => {
+    const el = eventsScrollRef.current;
+    if (!el) return;
+    setCanScrollEventsLeft(el.scrollLeft > 10);
+    setCanScrollEventsRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
   useEffect(() => {
     const el = eventsScrollRef.current;
     if (!el) return;
@@ -225,22 +261,18 @@ const PlacementCarousel = () => {
     return () => el.removeEventListener("scroll", checkEventsScroll);
   }, []);
 
+  const scrollEvents = (dir: "left" | "right") => {
+    const el = eventsScrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir === "left" ? -(el.clientWidth * 0.9) : el.clientWidth * 0.9, behavior: "smooth" });
+  };
+
+  // ── Testimonials scroll ──────────────────────────────────────────────────
   const checkTestimonialsScroll = () => {
     const el = testimonialsScrollRef.current;
     if (!el) return;
     setCanScrollTestimonialsLeft(el.scrollLeft > 10);
     setCanScrollTestimonialsRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-  };
-
-  const scrollTestimonials = (dir: "left" | "right") => {
-    const el = testimonialsScrollRef.current;
-    if (!el) return;
-    const amount = el.clientWidth * 0.85;
-    el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
-  };
-
-  const toggleTestimonial = (i: number) => {
-    setExpandedTestimonials((prev) => ({ ...prev, [i]: !prev[i] }));
   };
 
   useEffect(() => {
@@ -250,6 +282,16 @@ const PlacementCarousel = () => {
     checkTestimonialsScroll();
     return () => el.removeEventListener("scroll", checkTestimonialsScroll);
   }, []);
+
+  const scrollTestimonials = (dir: "left" | "right") => {
+    const el = testimonialsScrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir === "left" ? -(el.clientWidth * 0.85) : el.clientWidth * 0.85, behavior: "smooth" });
+  };
+
+  const toggleTestimonial = (i: number) => {
+    setExpandedTestimonials((prev) => ({ ...prev, [i]: !prev[i] }));
+  };
 
   return (
     <section className="section-padding bg-secondary">
@@ -262,6 +304,7 @@ const PlacementCarousel = () => {
           </div>
         </SectionFadeIn>
 
+        {/* ── Placement Photos Carousel ── */}
         <div className="relative">
           {canScrollLeft && (
             <button
@@ -308,6 +351,7 @@ const PlacementCarousel = () => {
           </div>
         </div>
 
+        {/* ── Recruiters / Company Logos ── */}
         <SectionFadeIn>
           <div className="mt-14 rounded-[1.75rem] border border-border/60 bg-background px-4 py-8 md:px-6 shadow-lg shadow-slate-900/5 overflow-hidden">
             <div className="text-center mb-6">
@@ -319,7 +363,29 @@ const PlacementCarousel = () => {
               <div className="pointer-events-none absolute inset-y-0 left-0 w-10 md:w-14 bg-gradient-to-r from-background to-transparent z-10" />
               <div className="pointer-events-none absolute inset-y-0 right-0 w-10 md:w-14 bg-gradient-to-l from-background to-transparent z-10" />
 
+              {canScrollLogosLeft && (
+                <button
+                  onClick={() => scrollLogos("left")}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur-sm border border-border rounded-full p-2 shadow-lg hover:bg-primary hover:text-primary-foreground transition-colors"
+                  aria-label="Scroll recruiters left"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+              )}
+              {canScrollLogosRight && (
+                <button
+                  onClick={() => scrollLogos("right")}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur-sm border border-border rounded-full p-2 shadow-lg hover:bg-primary hover:text-primary-foreground transition-colors"
+                  aria-label="Scroll recruiters right"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              )}
+
               <div
+                ref={logosScrollRef}
+                onMouseEnter={() => setIsLogosHovered(true)}
+                onMouseLeave={() => setIsLogosHovered(false)}
                 className="flex gap-4 overflow-x-auto pb-2 px-1 snap-x snap-mandatory scrollbar-hide"
                 style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
               >
@@ -336,6 +402,7 @@ const PlacementCarousel = () => {
           </div>
         </SectionFadeIn>
 
+        {/* ── Knowledge & Experience ── */}
         <SectionFadeIn>
           <div className="mt-16 rounded-[2rem] border border-border/60 bg-background p-6 md:p-10 shadow-lg shadow-slate-900/5">
             <div className="grid lg:grid-cols-[1.08fr_1fr] gap-8 items-stretch">
@@ -397,10 +464,11 @@ const PlacementCarousel = () => {
           </div>
         </SectionFadeIn>
 
+        {/* ── PGDM Tiles ── */}
         <SectionFadeIn>
           <div className="mt-16 overflow-hidden rounded-[2rem] border border-border/60 bg-background shadow-lg shadow-slate-900/5">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
-              {pgdmTiles.map((tile, i) => (
+              {pgdmTiles.map((tile) => (
                 <Link
                   key={tile.title}
                   to={tile.path}
@@ -449,6 +517,7 @@ const PlacementCarousel = () => {
           </div>
         </SectionFadeIn>
 
+        {/* ── International Immersions ── */}
         <SectionFadeIn>
           <div className="mt-16 overflow-hidden rounded-[2rem] border border-white/10 bg-[#3e3f9e] text-primary-foreground shadow-[0_20px_60px_rgba(24,26,87,0.28)]">
             <div className="grid lg:grid-cols-[1.05fr_1fr] gap-8 p-6 md:p-10 lg:p-14 items-center">
@@ -484,6 +553,7 @@ const PlacementCarousel = () => {
           </div>
         </SectionFadeIn>
 
+        {/* ── Guest Events ── */}
         <SectionFadeIn>
           <div className="mt-16 rounded-[2rem] border border-border/60 bg-background p-6 md:p-10 shadow-lg shadow-slate-900/5">
             <div className="mb-8">
@@ -531,6 +601,7 @@ const PlacementCarousel = () => {
           </div>
         </SectionFadeIn>
 
+        {/* ── 100% Placement Assistance Banner ── */}
         <SectionFadeIn>
           <div className="mt-16 relative overflow-hidden rounded-[2rem] border border-white/10 min-h-[320px] md:min-h-[380px]">
             <img src={placementsImg} alt="Placement assistance at ASB" className="absolute inset-0 h-full w-full object-cover" />
@@ -553,6 +624,7 @@ const PlacementCarousel = () => {
           </div>
         </SectionFadeIn>
 
+        {/* ── Testimonials ── */}
         <SectionFadeIn>
           <div className="mt-16 rounded-[2rem] border border-border/60 bg-background p-6 md:p-10 shadow-lg shadow-slate-900/5 overflow-hidden">
             <div className="text-center mb-10">
@@ -591,7 +663,6 @@ const PlacementCarousel = () => {
                     key={i}
                     className="snap-start shrink-0 w-[280px] sm:w-[300px] rounded-2xl border border-border/60 bg-secondary flex flex-col p-5"
                   >
-                    {/* Photo */}
                     <div className="flex flex-col items-center mb-4">
                       <div className="h-24 w-24 rounded-full overflow-hidden ring-4 ring-primary/15 shadow-lg shadow-primary/10 mb-4">
                         <img
@@ -606,12 +677,10 @@ const PlacementCarousel = () => {
                       <p className="text-center text-[11px] text-primary/60 font-semibold mt-1 uppercase tracking-wide">{t.batch}</p>
                     </div>
 
-                    {/* Preview — first paragraph always visible */}
                     <p className="text-[13px] text-foreground/75 leading-relaxed line-clamp-4">
                       {t.paragraphs[0]}
                     </p>
 
-                    {/* Mobile: expandable remaining paragraphs */}
                     {t.paragraphs.length > 1 && (
                       <div className="md:hidden mt-3">
                         <div
@@ -631,7 +700,6 @@ const PlacementCarousel = () => {
                       </div>
                     )}
 
-                    {/* Desktop: click-triggered popover with full content */}
                     {t.paragraphs.length > 1 && (
                       <div className="hidden md:block mt-3">
                         <Popover>
