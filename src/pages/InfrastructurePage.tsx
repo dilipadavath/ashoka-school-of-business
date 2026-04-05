@@ -1,7 +1,7 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import infrastructureVideo from "@/assets/Sequence 03.mp4";
+import infrastructureVideo from "@/Chanakya.mp4";
 
 const galleryModules = import.meta.glob("../assets/gallery/*.{png,webp,jpg,jpeg}", {
   eager: true,

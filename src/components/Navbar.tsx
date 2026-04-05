@@ -55,7 +55,13 @@ const megaMenuItems = {
   },
 };
 
-const programsChildren = [
+type MegaMenuKey = keyof typeof megaMenuItems;
+type NavLinkItem = { label: string; path: string };
+type NavWithChildrenItem = { label: string; children: NavLinkItem[] };
+type NavMegaItem = { label: string; megaMenu: true; megaKey: MegaMenuKey };
+type NavItem = NavLinkItem | NavWithChildrenItem | NavMegaItem;
+
+const programsChildren: NavLinkItem[] = [
   { label: "PGDM – Securities Market", path: "/qms" },
   { label: "PGDM – Artificial Intelligence & Data Science", path: "/pgdm-artificial-intelligence-data-science-colleges-in-hyderabad" },
   { label: "PGDM – Marketing with Analytics", path: "/pgdm-marketing-business-analytics-colleges-in-hyderabad" },
@@ -74,7 +80,7 @@ const topBarLinks = [
 ];
 
 // Main nav items (bottom row)
-const mainNavItems = [
+const mainNavItems: NavItem[] = [
   { label: "Home", path: "/" },
   { label: "Explore ASB", megaMenu: true, megaKey: "Explore ASB" },
   {
@@ -117,11 +123,11 @@ const Navbar = () => {
     return current === target || current.startsWith(`${target}/`);
   };
 
-  const isParentItemActive = (item: any) => {
-    if (item.path) return isPathActive(item.path);
-    if (item.children) return item.children.some((child: any) => isPathActive(child.path));
-    if (item.megaMenu) {
-      const sections = megaMenuItems[item.megaKey as keyof typeof megaMenuItems]?.sections ?? [];
+  const isParentItemActive = (item: NavItem) => {
+    if ("path" in item) return isPathActive(item.path);
+    if ("children" in item) return item.children.some((child) => isPathActive(child.path));
+    if ("megaMenu" in item) {
+      const sections = megaMenuItems[item.megaKey]?.sections ?? [];
       return sections.some((section) => section.links.some((link) => isPathActive(link.path.split("#")[0] || link.path)));
     }
     return false;
@@ -209,7 +215,7 @@ const Navbar = () => {
           {/* Desktop Main Nav */}
           <div className="hidden lg:flex items-center gap-0.5">
             {mainNavItems.map((item) =>
-              (item as any).megaMenu ? (
+              "megaMenu" in item ? (
                 <div
                   key={item.label}
                   className="relative group"
@@ -227,13 +233,13 @@ const Navbar = () => {
                   {openDropdown === item.label && (
                     <div
                       className={`absolute top-full bg-background border border-border rounded-xl shadow-xl py-6 px-8 ${
-                        (item as any).megaKey === "Grievance"
+                        item.megaKey === "Grievance"
                           ? "right-0 min-w-[620px]"
                           : "left-1/2 -translate-x-1/2 min-w-[600px]"
                       }`}
                     >
-                      <div className={`grid gap-6 ${(item as any).megaKey === "Grievance" ? "grid-cols-2" : "grid-cols-3"}`}>
-                        {megaMenuItems[(item as any).megaKey as keyof typeof megaMenuItems]?.sections.map((section) => (
+                      <div className={`grid gap-6 ${item.megaKey === "Grievance" ? "grid-cols-2" : "grid-cols-3"}`}>
+                        {megaMenuItems[item.megaKey]?.sections.map((section) => (
                           <div key={section.heading}>
                             {section.heading ? (
                               <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">{section.heading}</p>
@@ -256,7 +262,7 @@ const Navbar = () => {
                           </div>
                         ))}
                       </div>
-                      {(item as any).megaKey === "Explore ASB" ? (
+                      {item.megaKey === "Explore ASB" ? (
                         <div className="mt-4 pt-4 border-t border-border">
                           <Link to="/about" className="text-sm font-semibold text-primary hover:underline">
                             View Full Explore ASB Page →
@@ -266,7 +272,7 @@ const Navbar = () => {
                     </div>
                   )}
                 </div>
-              ) : (item as any).children ? (
+              ) : "children" in item ? (
                 <div
                   key={item.label}
                   className="relative group"
@@ -287,7 +293,7 @@ const Navbar = () => {
                         item.label === "Grievance" ? "right-0" : "left-0"
                       }`}
                     >
-                      {(item as any).children.map((child: any) => (
+                      {item.children.map((child) => (
                         <Link
                           key={child.label}
                           to={child.path}
@@ -306,9 +312,9 @@ const Navbar = () => {
               ) : (
                 <Link
                   key={item.label}
-                  to={item.path!}
+                  to={item.path}
                   className={`px-3 py-2 text-sm font-semibold transition-colors ${
-                    isPathActive(item.path!) ? "text-primary" : "text-foreground hover:text-primary"
+                    isPathActive(item.path) ? "text-primary" : "text-foreground hover:text-primary"
                   }`}
                 >
                   {item.label}
@@ -344,7 +350,7 @@ const Navbar = () => {
           </div>
 
           {mainNavItems.map((item) =>
-            (item as any).megaMenu ? (
+            "megaMenu" in item ? (
               <div key={item.label}>
                 <button
                   onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
@@ -357,7 +363,7 @@ const Navbar = () => {
                 </button>
                 {openDropdown === item.label && (
                   <div className="bg-secondary px-6 py-4 space-y-4">
-                    {megaMenuItems[(item as any).megaKey as keyof typeof megaMenuItems]?.sections.map((section) => (
+                    {megaMenuItems[item.megaKey]?.sections.map((section) => (
                       <div key={section.heading}>
                         {section.heading ? (
                           <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">{section.heading}</p>
@@ -377,7 +383,7 @@ const Navbar = () => {
                         ))}
                       </div>
                     ))}
-                    {(item as any).megaKey === "Explore ASB" ? (
+                    {item.megaKey === "Explore ASB" ? (
                       <Link to="/about" className="block px-4 py-2 text-sm font-semibold text-primary">
                         View Full Explore ASB Page →
                       </Link>
@@ -385,7 +391,7 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-            ) : (item as any).children ? (
+            ) : "children" in item ? (
               <div key={item.label}>
                 <button
                   onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
@@ -398,7 +404,7 @@ const Navbar = () => {
                 </button>
                 {openDropdown === item.label && (
                   <div className="bg-secondary">
-                    {(item as any).children.map((child: any) => (
+                    {item.children.map((child) => (
                       <Link
                         key={child.label}
                         to={child.path}
@@ -415,9 +421,9 @@ const Navbar = () => {
             ) : (
               <Link
                 key={item.label}
-                to={item.path!}
+                to={item.path}
                 className={`block px-6 py-3 text-sm font-medium ${
-                  isPathActive(item.path!) ? "text-primary" : "text-foreground hover:text-primary"
+                  isPathActive(item.path) ? "text-primary" : "text-foreground hover:text-primary"
                 }`}
               >
                 {item.label}

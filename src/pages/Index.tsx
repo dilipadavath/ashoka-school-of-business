@@ -13,7 +13,7 @@ import studyHall from "@/assets/study hall.jpg";
 import campusImg1 from "@/assets/campus-img1.jpg";
 import graduation from "@/assets/graduation.jpg";
 import chanakyaVideo from "@/Chanakya.mp4";
-import aboutVideoOne from "@/assets/Sequence 02_1.mp4";
+import aboutVideoOne from "@/Chanakya.mp4";
 import { Check, GraduationCap, BookOpen, Building2, Coffee, Gamepad2, Library, Monitor } from "lucide-react";
 
 const Index = () => {

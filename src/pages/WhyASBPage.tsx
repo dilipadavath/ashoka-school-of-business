@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import SectionFadeIn from "@/components/SectionFadeIn";
-import aboutVideoOne from "@/assets/Sequence 03.mp4";
+import aboutVideoOne from "@/Chanakya.mp4";
 import campusImg from "@/assets/campus-life.jpg";
 import campusHub from "@/assets/campus-hub.png";
 import globalImmersionImg from "@/assets/global-immersion.jpg";
