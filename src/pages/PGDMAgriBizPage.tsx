@@ -1,4 +1,7 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
+import TextReveal from "@/components/TextReveal";
+import HoverCardAnimation from "@/components/HoverCardAnimation";
+import AnimatedButton from "@/components/AnimatedButton";
 import {
   ArrowRight,
   ArrowDown,
@@ -122,7 +125,9 @@ const PGDMAgriBizPage = () => {
                 <p className="inline-flex rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.22em]">
                   Our Programs
                 </p>
-                <h1 className="mt-5 text-3xl md:text-5xl font-black leading-tight">AGRI-BUSINESS MANAGEMENT</h1>
+                <TextReveal variant="word" delay={0.1} stagger={0.06}>
+                  <h1 className="mt-5 text-3xl md:text-5xl font-black leading-tight">AGRI-BUSINESS MANAGEMENT</h1>
+                </TextReveal>
                 <h2 className="mt-4 text-xl md:text-2xl font-bold text-primary-foreground/95">About the Program</h2>
                 <p className="mt-4 max-w-3xl text-sm md:text-base leading-relaxed text-primary-foreground/90">
                   The PGDM in Agribusiness Management is a two-year program designed to develop professionals who can manage and lead in the evolving agricultural and allied sectors. The program blends management principles with agrarian sciences, equipping students with the necessary skills to address industry challenges and drive sustainable growth.
@@ -187,19 +192,21 @@ const PGDMAgriBizPage = () => {
           <SectionFadeIn>
             <div className="mt-8">
               <h3 className="text-2xl md:text-3xl font-black text-foreground text-center">Program Highlights</h3>
-              <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-                {highlights.map((item, index) => (
-                  <div key={item.title} className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_20px_rgba(15,23,42,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
-                    <div className="flex h-10 items-center justify-start">
-                      <div className={index === 0 ? "inline-flex rounded-lg bg-foreground p-2 text-background" : "inline-flex rounded-lg bg-primary/10 p-2 text-primary"}>
-                        <item.icon className="h-6 w-6" />
+              <HoverCardAnimation glowing>
+                <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                  {highlights.map((item, index) => (
+                    <div key={item.title} className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_20px_rgba(15,23,42,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
+                      <div className="flex h-10 items-center justify-start">
+                        <div className={index === 0 ? "inline-flex rounded-lg bg-foreground p-2 text-background" : "inline-flex rounded-lg bg-primary/10 p-2 text-primary"}>
+                          <item.icon className="h-6 w-6" />
+                        </div>
                       </div>
+                      <p className="mt-4 text-left text-xl leading-tight font-bold text-foreground">{item.title}</p>
+                      <p className="mt-3 text-left text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
                     </div>
-                    <p className="mt-4 text-left text-xl leading-tight font-bold text-foreground">{item.title}</p>
-                    <p className="mt-3 text-left text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              </HoverCardAnimation>
             </div>
           </SectionFadeIn>
 

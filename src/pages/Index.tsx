@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import SectionFadeIn from "@/components/SectionFadeIn";
 import ParallaxSection from "@/components/ParallaxSection";
 import PlacementCarousel from "@/components/PlacementCarousel";
+import TextReveal from "@/components/TextReveal";
+import HoverCardAnimation from "@/components/HoverCardAnimation";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import AnimatedButton from "@/components/AnimatedButton";
+import FloatingElement from "@/components/FloatingElement";
 import campusBuilding from "@/assets/Modern Infrastructure.jpg";
 import campusCafeteria from "@/assets/Cafeteria img.jpg";
 import campusHub from "@/assets/campus-hub.png";
@@ -41,26 +46,40 @@ const Index = () => {
         />
         <div className={`absolute inset-0 bg-charcoal/60 transition-opacity duration-700 ${showHeroOverlay ? "opacity-100" : "opacity-0"}`} />
         <div className={`relative z-10 px-4 text-center transition-all duration-700 ${showHeroOverlay ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}>
-          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-black text-primary-foreground mb-4 tracking-tight">
-            Learn. Lead. <span className="text-primary">Conquer.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-primary-foreground/80 font-display font-medium mb-10">
-            Ashoka School of Business
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/bba"
-              className="px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg text-lg hover:bg-primary/90 transition-colors"
-            >
-              Explore Programs
-            </Link>
-            <Link
-              to="/contact-us"
-              className="px-8 py-4 border-2 border-primary-foreground text-primary-foreground font-semibold rounded-lg text-lg hover:bg-primary-foreground/10 transition-colors"
-            >
-              Apply Now
-            </Link>
-          </div>
+          <TextReveal
+            variant="word"
+            delay={0.2}
+            stagger={0.08}
+            duration={0.6}
+            className="font-display text-4xl sm:text-5xl md:text-7xl font-black text-primary-foreground mb-4 tracking-tight"
+          >
+            Learn. Lead. Conquer.
+          </TextReveal>
+          <SectionFadeIn delay={0.6} className="mb-10">
+            <p className="text-xl md:text-2xl text-primary-foreground/80 font-display font-medium">
+              Ashoka School of Business
+            </p>
+          </SectionFadeIn>
+          <SectionFadeIn delay={0.8}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <AnimatedButton
+                href="/bba"
+                className="text-lg"
+                size="lg"
+                glowing={true}
+              >
+                Explore Programs
+              </AnimatedButton>
+              <AnimatedButton
+                href="/contact-us"
+                variant="outline"
+                className="text-lg border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
+                size="lg"
+              >
+                Apply Now
+              </AnimatedButton>
+            </div>
+          </SectionFadeIn>
         </div>
       </section>
 
@@ -118,8 +137,14 @@ const Index = () => {
                   />
                 </div>
                 <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-xl shadow-lg hidden md:block">
-                  <p className="text-3xl font-bold">25+</p>
-                  <p className="text-sm">Years of Excellence</p>
+                  <FloatingElement duration={3} offset={12}>
+                    <div>
+                      <p className="text-3xl font-bold">
+                        <AnimatedCounter end={25} />
+                      </p>
+                      <p className="text-sm">Years of Excellence</p>
+                    </div>
+                  </FloatingElement>
                 </div>
               </div>
             </div>
@@ -158,20 +183,23 @@ const Index = () => {
               { icon: Monitor, title: "Smart Classrooms", desc: "AV-equipped classrooms with business simulation tools", img: smartClassroom },
               { icon: Building2, title: "Modern Infrastructure", desc: "State-of-the-art campus with contemporary architecture", img: campusBuilding },
             ].map(({ icon: Icon, title, desc, img }, i) => (
-              <SectionFadeIn key={title} delay={i * 0.1}>
-                <div className="bg-background rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
-                  <div className="h-48 overflow-hidden">
-                    <img src={img} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Icon className="h-5 w-5 text-primary" />
-                      <h3 className="font-bold text-foreground">{title}</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{desc}</p>
-                  </div>
+              <HoverCardAnimation
+                key={title}
+                index={i}
+                glowing={true}
+                className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group"
+              >
+                <div className="h-48 overflow-hidden">
+                  <img src={img} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
-              </SectionFadeIn>
+                <div className="p-6">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Icon className="h-5 w-5 text-primary" />
+                    <h3 className="font-bold text-foreground">{title}</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{desc}</p>
+                </div>
+              </HoverCardAnimation>
             ))}
           </div>
         </div>
@@ -183,9 +211,14 @@ const Index = () => {
           <SectionFadeIn>
             <h2 className="text-3xl md:text-5xl font-black text-primary-foreground mb-4">Shape Your Tomorrow</h2>
             <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto mb-8">Join the ranks of successful alumni making an impact across industries worldwide.</p>
-            <Link to="/contact-us" className="px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg text-lg hover:bg-primary/90 transition-colors inline-block">
+            <AnimatedButton
+              href="/contact-us"
+              className="text-lg"
+              size="lg"
+              glowing={true}
+            >
               Start Your Journey
-            </Link>
+            </AnimatedButton>
           </SectionFadeIn>
         </div>
       </ParallaxSection>

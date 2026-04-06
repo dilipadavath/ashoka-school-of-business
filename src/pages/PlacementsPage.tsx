@@ -1,4 +1,7 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
+import TextReveal from "@/components/TextReveal";
+import HoverCardAnimation from "@/components/HoverCardAnimation";
+import AnimatedButton from "@/components/AnimatedButton";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -107,7 +110,9 @@ const PlacementsPage = () => {
         <div className="container-wide relative z-10 px-4">
           <SectionFadeIn>
             <p className="text-primary font-semibold text-sm uppercase tracking-[0.24em] mb-3">Placements</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95]">RECRUITERS OF ASB</h1>
+            <TextReveal variant="word" delay={0.1} stagger={0.08}>
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95]">RECRUITERS OF ASB</h1>
+            </TextReveal>
             <p className="mt-5 text-primary-foreground/75 max-w-3xl text-base md:text-lg leading-relaxed">
               When choosing a management institute, placement opportunities play a crucial role in decision-making.
               Finding the top MBA colleges in Hyderabad with placements ensures a successful career path with lucrative

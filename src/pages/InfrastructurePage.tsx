@@ -1,4 +1,6 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
+import TextReveal from "@/components/TextReveal";
+import HoverCardAnimation from "@/components/HoverCardAnimation";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import infrastructureVideo from "@/Chanakya.mp4";
@@ -36,9 +38,11 @@ const InfrastructurePage = () => {
 
         <div className="container-wide relative z-10 px-4 grid gap-10 lg:grid-cols-[1fr_1.05fr] items-center">
           <SectionFadeIn>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95] text-primary-foreground">
-              Infrastructure
-            </h1>
+            <TextReveal variant="word" delay={0.1} stagger={0.08}>
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95] text-primary-foreground">
+                Infrastructure
+              </h1>
+            </TextReveal>
             <p className="mt-6 max-w-2xl text-primary-foreground/75 text-base md:text-lg leading-relaxed">
               ASB offers access to various facilities to render a remarkable learning experience to the students. The campus is located on the scenic outskirts of Hyderabad and provides facilities for both academic and leisure purposes. ASB houses interactive and digital classrooms. It also has 2 Seminar halls with a capacity of 100 - 200+ students respectively to organise various programs. ASB consists of a space known as the Ashoka Hub which offers brainstorming sessions to aspiring entrepreneurs and students from different disciplines. It also constitutes a seminar hall with a capacity of 200+ students to hold guest lectures. ASB comprises a library with the latest journals and books and exceptional hostel facilities for both boys and girls within the campus.
             </p>

@@ -1,5 +1,8 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
 import ParallaxSection from "@/components/ParallaxSection";
+import TextReveal from "@/components/TextReveal";
+import HoverCardAnimation from "@/components/HoverCardAnimation";
+import AnimatedButton from "@/components/AnimatedButton";
 import { Link } from "react-router-dom";
 import {
   Globe, Lightbulb, Users, Award, BookOpen, GraduationCap,
@@ -67,8 +70,10 @@ const BBAPage = () => {
       <section className="bg-charcoal text-primary-foreground section-padding text-center">
         <SectionFadeIn>
           <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Ashoka College of Business Management</p>
-          <h1 className="text-4xl md:text-6xl font-black mb-4">Learn. Lead. <span className="text-primary">Conquer.</span></h1>
-          <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto">10-Dimensional BBA Program — Where Future Business Leaders Begin</p>
+          <TextReveal variant="word" delay={0.1} stagger={0.06}>
+            Learn. Lead. Conquer.
+          </TextReveal>
+          <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto mt-4">10-Dimensional BBA Program — Where Future Business Leaders Begin</p>
         </SectionFadeIn>
       </section>
 
@@ -137,13 +142,16 @@ const BBAPage = () => {
           </SectionFadeIn>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {bbaAdvantages.map(({ icon: Icon, title, desc }, i) => (
-              <SectionFadeIn key={title} delay={i * 0.08}>
-                <div className="p-6 rounded-xl border border-border hover:border-primary/30 hover:shadow-md transition-all">
-                  <Icon className="h-8 w-8 text-primary mb-4" />
-                  <h3 className="font-bold text-foreground mb-2">{title}</h3>
-                  <p className="text-sm text-muted-foreground">{desc}</p>
-                </div>
-              </SectionFadeIn>
+              <HoverCardAnimation
+                key={title}
+                index={i}
+                glowing={true}
+                className="p-6 rounded-xl border border-border hover:border-primary/30 shadow-md"
+              >
+                <Icon className="h-8 w-8 text-primary mb-4" />
+                <h3 className="font-bold text-foreground mb-2">{title}</h3>
+                <p className="text-sm text-muted-foreground">{desc}</p>
+              </HoverCardAnimation>
             ))}
           </div>
         </div>
@@ -192,10 +200,10 @@ const BBAPage = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">Campus Facilities</h2>
             </div>
           </SectionFadeIn>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {campusFacilities.map(({ icon: Icon, title, desc, img }, i) => (
-              <SectionFadeIn key={title} delay={i * 0.08}>
-                <div className="bg-background rounded-xl overflow-hidden border border-border hover:shadow-md transition-all group">
+          <HoverCardAnimation glowing>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {campusFacilities.map(({ icon: Icon, title, desc, img }) => (
+                <div key={title} className="bg-background rounded-xl overflow-hidden border border-border hover:shadow-md transition-all group">
                   <div className="h-48 overflow-hidden">
                     <img src={img} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
@@ -207,9 +215,9 @@ const BBAPage = () => {
                     <p className="text-sm text-muted-foreground">{desc}</p>
                   </div>
                 </div>
-              </SectionFadeIn>
-            ))}
-          </div>
+              ))}
+            </div>
+          </HoverCardAnimation>
         </div>
       </section>
 
@@ -232,17 +240,17 @@ const BBAPage = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">Craft Your Future — Choose Your Business Breakthrough</h2>
             </div>
           </SectionFadeIn>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {careerPathways.map(({ icon: Icon, title, desc }, i) => (
-              <SectionFadeIn key={title} delay={i * 0.08}>
-                <div className="p-6 rounded-xl border border-border hover:border-primary/30 transition-all text-center">
+          <HoverCardAnimation glowing>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {careerPathways.map(({ icon: Icon, title, desc }) => (
+                <div key={title} className="p-6 rounded-xl border border-border hover:border-primary/30 transition-all text-center">
                   <Icon className="h-10 w-10 text-primary mb-4 mx-auto" />
                   <h3 className="font-bold text-foreground mb-2">{title}</h3>
                   <p className="text-sm text-muted-foreground">{desc}</p>
                 </div>
-              </SectionFadeIn>
-            ))}
-          </div>
+              ))}
+            </div>
+          </HoverCardAnimation>
         </div>
       </section>
 
@@ -289,10 +297,10 @@ const BBAPage = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">Industry Expert Insights</h2>
             </div>
           </SectionFadeIn>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {experts.map((expert, i) => (
-              <SectionFadeIn key={expert.name} delay={i * 0.1}>
-                <div className="p-6 rounded-xl border border-border bg-secondary">
+          <HoverCardAnimation glowing>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {experts.map((expert) => (
+                <div key={expert.name} className="p-6 rounded-xl border border-border bg-secondary">
                   <div className="flex items-center gap-4 mb-4">
                     <img src={expert.img} alt={expert.name} className="w-14 h-14 rounded-full object-cover" />
                     <div>
@@ -303,9 +311,9 @@ const BBAPage = () => {
                   <MessageSquare className="h-5 w-5 text-primary mb-2" />
                   <p className="text-muted-foreground text-sm italic">"{expert.quote}"</p>
                 </div>
-              </SectionFadeIn>
-            ))}
-          </div>
+              ))}
+            </div>
+          </HoverCardAnimation>
         </div>
       </section>
 

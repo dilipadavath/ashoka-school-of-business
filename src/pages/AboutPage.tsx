@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SectionFadeIn from "@/components/SectionFadeIn";
+import TextReveal from "@/components/TextReveal";
+import HoverCardAnimation from "@/components/HoverCardAnimation";
+import AnimatedButton from "@/components/AnimatedButton";
 import { Eye, Target, GraduationCap } from "lucide-react";
 import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import heroAbout from "@/assets/hero-about.jpg";
@@ -31,9 +34,11 @@ const AboutPage = () => {
           <SectionFadeIn>
             <div className="max-w-3xl">
               <p className="text-primary-foreground/75 text-sm font-semibold uppercase tracking-[0.28em] mb-4">About</p>
-              <h1 className="font-display text-4xl md:text-6xl font-black text-primary-foreground mb-5 tracking-tight">
-                About
-              </h1>
+              <TextReveal variant="word" delay={0.1} stagger={0.08}>
+                <h1 className="font-display text-4xl md:text-6xl font-black text-primary-foreground mb-5 tracking-tight">
+                  About
+                </h1>
+              </TextReveal>
               <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl leading-relaxed">
                 A business school environment built to develop industry-ready leaders with global outlook, entrepreneurial thinking, and strong professional ethics.
               </p>
@@ -112,7 +117,7 @@ const AboutPage = () => {
       {/* Vision & Mission */}
       <section id="vision-mission" className="pb-8 bg-background scroll-mt-28">
         <div className="container-wide px-4">
-          <SectionFadeIn>
+          <HoverCardAnimation glowing>
             <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
               <div className="rounded-[1.75rem] bg-primary p-8 md:p-10 text-primary-foreground shadow-[0_16px_40px_rgba(226,34,43,0.18)]">
                 <div className="flex items-center gap-3 mb-4">
@@ -133,7 +138,7 @@ const AboutPage = () => {
                 </p>
               </div>
             </div>
-          </SectionFadeIn>
+          </HoverCardAnimation>
         </div>
       </section>
 

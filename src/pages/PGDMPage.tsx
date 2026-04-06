@@ -1,5 +1,7 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
 import ParallaxSection from "@/components/ParallaxSection";
+import TextReveal from "@/components/TextReveal";
+import HoverCardAnimation from "@/components/HoverCardAnimation";
 import { CheckCircle, FileText } from "lucide-react";
 import pgdmSeminar from "@/assets/pgdm-seminar.jpg";
 import smartClassroom from "@/assets/Smart Classrooms.jpg";
@@ -57,7 +59,9 @@ const PGDMPage = () => {
         <div className="relative z-10">
           <SectionFadeIn>
             <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">PGDM Program</p>
-            <h1 className="text-3xl md:text-5xl font-black mb-4">PGDM Marketing with Analytics</h1>
+            <TextReveal variant="word" delay={0.1} stagger={0.06}>
+              <h1 className="text-3xl md:text-5xl font-black mb-4">PGDM Marketing with Analytics</h1>
+            </TextReveal>
             <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">ASB offers a 2-year full-time tech-blended PGDM program</p>
           </SectionFadeIn>
         </div>

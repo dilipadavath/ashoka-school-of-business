@@ -1,5 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import SectionFadeIn from "@/components/SectionFadeIn";
+import TextReveal from "@/components/TextReveal";
+import HoverCardAnimation from "@/components/HoverCardAnimation";
 import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from "lucide-react";
 import contactHero from "@/assets/contact-hero.jpg";
 
@@ -86,7 +88,9 @@ const ContactPage = () => {
         <img src={contactHero} alt="" className="absolute inset-0 w-full h-full object-cover opacity-25" />
         <div className="relative z-10">
           <SectionFadeIn>
-            <h1 className="text-3xl md:text-5xl font-black mb-4">Contact Us</h1>
+            <TextReveal variant="word" delay={0.1} stagger={0.12}>
+              <h1 className="text-3xl md:text-5xl font-black mb-4">Contact Us</h1>
+            </TextReveal>
             <p className="text-primary-foreground/80 text-lg">Let's Connect With us</p>
           </SectionFadeIn>
         </div>
