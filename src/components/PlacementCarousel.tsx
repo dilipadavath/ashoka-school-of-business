@@ -134,7 +134,7 @@ const testimonials = [
     role: "Credit Analyst",
     batch: "PGDM 2022–24 · Matrix",
     image: hymavathiImg,
-    imagePosition: "50% 28%",
+    imagePosition: "50% 50%",
     paragraphs: [
       "Greetings, My name is Hymavathi, from the PGDM batch of 2022-24 at Ashoka School of Business. I am currently working as a Credit Analyst at Matrix.",
       "Looking back at my time at ASB, I fondly remember the vibrant and enriching environment fostered by the diverse clubs and committees. From the intellectually stimulating sessions of the Academics Club to the serene ambiance of the Library, each space offered a unique opportunity for growth and exploration.",
@@ -147,7 +147,8 @@ const testimonials = [
     role: "Business Analyst",
     batch: "Batch 2021–23 · Tech Mahindra",
     image: lingesImg,
-    imagePosition: "50% 30%",
+    imagePosition: "50% 50%",
+    imageOffsetY: -6,
     paragraphs: [
       "I'm Lingeswaran S, a proud alumnus of Ashoka School of Business (Batch 2021-2023) and currently working as a Business Analyst at Tech Mahindra. I chose ASB because it offered a perfect balance—Hyderabad's vibrant exposure, an AI and analytics-focused curriculum, and an affordable fee structure compared to other B-schools.",
       "I specialized in Marketing with Marketing Analytics and AI ML as my minor. The practical, well-designed curriculum gave me the confidence to tackle analytics-based questions during interviews and secure a great placement through campus recruitment, with a 100% ROI.",
@@ -159,7 +160,7 @@ const testimonials = [
     role: "Advanced Analyst",
     batch: "Batch 2021–23 · Ernst & Young GDS",
     image: magisImg,
-    imagePosition: "50% 30%",
+    imagePosition: "50% 50%",
     paragraphs: [
       "Greetings of the day! Studying at Ashoka School of Business, which is a lush green, high-technology business school, has been an exceptional experience.",
       "The serene campus, surrounded by nature, provides a refreshing environment for learning and innovation. The finance department stands out with its cutting-edge resources and real-time financial data integration, fostering a hands-on approach to education. Faculty members are highly experienced, blending theoretical knowledge with practical insights, ensuring students are industry-ready.",
@@ -172,7 +173,7 @@ const testimonials = [
     role: "Associate Analyst – AI/ML",
     batch: "Batch 2021–23 · Tech Mahindra",
     image: reddyImg,
-    imagePosition: "50% 30%",
+    imagePosition: "50% 50%",
     paragraphs: [
       "Hi, I am Snehit Reddy shaprapawad of Ashoka batch of 2021-2023. Presently working at Tech Mahindra as Associate Analyst in AI/ML dept.",
       "I have had the privilege of engaging in extensive research, particularly in the fields of AI and ML. Under the mentorship of ASB faculty, particularly Prem Kumar Sir, I was able to explore various research topics, write research articles, and publish them in reputed conferences and journals indexed in Scopus and other recognized platforms.",
@@ -184,7 +185,8 @@ const testimonials = [
     role: "Alumni Member",
     batch: "Ashoka School of Business, Hyderabad",
     image: shaikImg,
-    imagePosition: "50% 30%",
+    imagePosition: "50% 50%",
+    imageOffsetY: -4,
     paragraphs: [
       "Greetings of the Day. I'm Shaik Ibrahim, an Alumni member of Ashoka School of Business, Hyderabad.",
       "Certainly, the role of the faculty members at Ashoka School of Business was crucial in determining my learning experience during my Postgraduate Diploma in Management (PGDM).",
@@ -1122,13 +1124,14 @@ const PlacementCarousel = () => {
                     className="snap-start shrink-0 w-[280px] sm:w-[300px] rounded-2xl border border-border/60 bg-secondary flex flex-col p-5"
                   >
                     <div className="flex flex-col items-center mb-4">
-                      <div className="h-24 w-24 rounded-full overflow-hidden ring-4 ring-primary/15 shadow-lg shadow-primary/10 mb-4">
+                      <div className="h-28 w-28 rounded-full overflow-hidden ring-4 ring-primary/15 shadow-lg shadow-primary/10 mb-4">
                         <img
                           src={t.image}
                           alt={t.name}
-                          className="h-full w-full scale-110 object-cover"
+                          className="h-full w-full object-cover"
                           style={{
                             objectPosition: t.imagePosition ?? "50% 30%",
+                            transform: `translateY(${t.imageOffsetY ?? 0}px)`,
                           }}
                           loading="lazy"
                         />
