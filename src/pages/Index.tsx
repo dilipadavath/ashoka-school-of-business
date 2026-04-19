@@ -160,7 +160,10 @@ const Index = () => {
       </section>
 
       {/* About ASB */}
-      <section id="about" className="section-padding bg-background overflow-x-clip">
+      <section
+        id="about"
+        className="section-padding bg-background overflow-x-clip"
+      >
         <div className="container-wide">
           <SectionFadeIn>
             <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-start">
@@ -224,7 +227,10 @@ const Index = () => {
                       const Icon = slide.icon;
 
                       return (
-                        <CarouselItem key={slide.title} className="basis-full pl-0">
+                        <CarouselItem
+                          key={slide.title}
+                          className="basis-full pl-0"
+                        >
                           <article
                             className={`w-full rounded-2xl sm:rounded-[2rem] ${slide.bgColor} flex min-h-[440px] flex-col p-4 sm:min-h-[500px] sm:p-5 md:min-h-[560px] md:p-6 shadow-[0_10px_28px_rgba(15,23,42,0.08)]`}
                           >
