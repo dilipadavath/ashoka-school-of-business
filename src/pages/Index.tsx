@@ -105,7 +105,7 @@ const Index = () => {
   }, [whyChooseApi]);
 
   return (
-    <div>
+    <div className="overflow-x-clip">
       {/* Hero */}
       <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-24 md:pt-28">
         <video
@@ -160,11 +160,11 @@ const Index = () => {
       </section>
 
       {/* About ASB */}
-      <section id="about" className="section-padding bg-background">
+      <section id="about" className="section-padding bg-background overflow-x-clip">
         <div className="container-wide">
           <SectionFadeIn>
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start">
-              <div>
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-start">
+              <div className="min-w-0">
                 <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">
                   About ASB
                 </p>
@@ -210,40 +210,40 @@ const Index = () => {
                   ))}
                 </div>
               </div>
-              <div className="relative bg-white">
+              <div className="relative min-w-0 w-full max-w-full sm:max-w-xl mx-auto lg:max-w-none bg-white">
                 <Carousel
                   setApi={setWhyChooseApi}
                   opts={{
                     loop: true,
                     align: "start",
                   }}
-                  className="relative overflow-hidden rounded-[2rem] bg-white p-3"
+                  className="relative w-full max-w-full overflow-hidden rounded-2xl sm:rounded-[2rem] bg-white p-2 sm:p-3"
                 >
-                  <CarouselContent className="-ml-0 rounded-[1.6rem] bg-white">
+                  <CarouselContent className="-ml-0 w-full rounded-[1.6rem] bg-white">
                     {whyChooseUsSlides.map((slide) => {
                       const Icon = slide.icon;
 
                       return (
-                        <CarouselItem key={slide.title} className="pl-0">
+                        <CarouselItem key={slide.title} className="basis-full pl-0">
                           <article
-                            className={`rounded-[2rem] ${slide.bgColor} flex h-[500px] flex-col p-5 md:h-[560px] md:p-6 shadow-[0_10px_28px_rgba(15,23,42,0.08)]`}
+                            className={`w-full rounded-2xl sm:rounded-[2rem] ${slide.bgColor} flex min-h-[440px] flex-col p-4 sm:min-h-[500px] sm:p-5 md:min-h-[560px] md:p-6 shadow-[0_10px_28px_rgba(15,23,42,0.08)]`}
                           >
-                            <div className="mb-5 flex items-center justify-between gap-4">
-                              <div className="inline-grid h-20 w-20 place-content-center rounded-full bg-white/15">
-                                <Icon className="h-9 w-9 text-white" />
+                            <div className="mb-4 sm:mb-5 flex items-center justify-between gap-4">
+                              <div className="inline-grid h-16 w-16 sm:h-20 sm:w-20 place-content-center rounded-full bg-white/15">
+                                <Icon className="h-7 w-7 sm:h-9 sm:w-9 text-white" />
                               </div>
                             </div>
-                            <h3 className="text-2xl md:text-[2rem] font-black uppercase tracking-tight text-white mb-3 leading-tight">
+                            <h3 className="text-xl sm:text-2xl md:text-[2rem] font-black uppercase tracking-tight text-white mb-3 leading-tight break-words">
                               {slide.title}
                             </h3>
-                            <p className="text-primary-foreground/85 text-lg leading-relaxed mb-6 md:mb-7 max-w-lg">
+                            <p className="text-primary-foreground/85 text-base sm:text-lg leading-relaxed mb-5 sm:mb-6 md:mb-7 max-w-lg">
                               {slide.description}
                             </p>
-                            <div className="mt-auto overflow-hidden rounded-[1.25rem] border border-white/20 bg-white/10">
+                            <div className="mt-auto overflow-hidden rounded-xl sm:rounded-[1.25rem] border border-white/20 bg-white/10">
                               <img
                                 src={slide.image}
                                 alt={slide.title}
-                                className="h-44 w-full object-cover md:h-52"
+                                className="h-36 w-full object-cover sm:h-44 md:h-52"
                                 loading="lazy"
                               />
                             </div>
