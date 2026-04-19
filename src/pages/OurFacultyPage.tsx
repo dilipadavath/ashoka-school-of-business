@@ -1,12 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import SectionFadeIn from "@/components/SectionFadeIn";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 
 import lakshmanImg from "@/assets/Lakshman Kumar.webp";
 import gajanethiImg from "@/assets/Gajanethi Swathi Kumari.webp";
@@ -56,7 +49,8 @@ const facultyMembers: FacultyMember[] = [
     name: "Dr. Gajanethi Swathi Kumari",
     role: "Dean - Academics",
     image: gajanethiImg,
-    qualification: "MBA, MSc Applied Psychology, MS Counseling and Psychotherapy, Ph.D.",
+    qualification:
+      "MBA, MSc Applied Psychology, MS Counseling and Psychotherapy, Ph.D.",
     experience: "22 years",
     specialization: "HR",
     bio: [
@@ -69,9 +63,9 @@ const facultyMembers: FacultyMember[] = [
     name: "Ms. Nikita Goel",
     role: "Assistant Professor of English",
     image: nikitaImg,
-    qualification: "B.A. English, M.A. English, Ph.D. (Pursuing) in English Language Education",
-    area:
-      "PhD scholar in School of English Language Education (EFLU), focused on feedback and self-regulatory strategies to develop authorial voice",
+    qualification:
+      "B.A. English, M.A. English, Ph.D. (Pursuing) in English Language Education",
+    area: "PhD scholar in School of English Language Education (EFLU), focused on feedback and self-regulatory strategies to develop authorial voice",
     bio: [
       "Before joining Ashoka, she worked as a Teaching Assistant at EFLU and a Language Buddy at Ambedkar University, New Delhi.",
       "She earned her MA in English from Central University of Gujarat as a gold medalist and completed her BA in English from Ambedkar University Delhi.",
@@ -313,7 +307,8 @@ const facultyMembers: FacultyMember[] = [
     name: "Dr. ANUPAM GUPTA",
     role: "Assistant Professor (Marketing)",
     image: placeholderImg,
-    qualification: "PhD (Consumer Scepticism Behaviour and Green Marketing), UGC-NET, MBA, Bachelor of Technology",
+    qualification:
+      "PhD (Consumer Scepticism Behaviour and Green Marketing), UGC-NET, MBA, Bachelor of Technology",
     experience: "7 years of PG teaching",
     bio: [
       "Dr. Anupam Gupta is an Assistant Professor in Marketing with strong focus on consumer behavior and sustainable marketing.",
@@ -324,24 +319,7 @@ const facultyMembers: FacultyMember[] = [
 ];
 
 const OurFacultyPage = () => {
-  const [selectedFaculty, setSelectedFaculty] = useState<FacultyMember | null>(null);
-
   const totalFaculty = useMemo(() => facultyMembers.length, []);
-  const currentIndex = selectedFaculty
-    ? facultyMembers.findIndex((member) => member.name === selectedFaculty.name)
-    : -1;
-
-  const showPreviousFaculty = () => {
-    if (currentIndex < 0) return;
-    const previousIndex = (currentIndex - 1 + facultyMembers.length) % facultyMembers.length;
-    setSelectedFaculty(facultyMembers[previousIndex]);
-  };
-
-  const showNextFaculty = () => {
-    if (currentIndex < 0) return;
-    const nextIndex = (currentIndex + 1) % facultyMembers.length;
-    setSelectedFaculty(facultyMembers[nextIndex]);
-  };
 
   return (
     <div className="pt-20 bg-background overflow-x-clip">
@@ -353,7 +331,9 @@ const OurFacultyPage = () => {
         </div>
         <div className="container-wide relative z-10 px-4 text-center">
           <SectionFadeIn>
-            <p className="text-primary font-semibold text-sm uppercase tracking-[0.28em] mb-4">Explore ASB</p>
+            <p className="text-primary font-semibold text-sm uppercase tracking-[0.28em] mb-4">
+              Explore ASB
+            </p>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95] text-primary-foreground">
               Our Faculty
             </h1>
@@ -365,8 +345,9 @@ const OurFacultyPage = () => {
               <span className="h-[2px] w-14 bg-primary/80" />
             </div>
             <p className="mt-7 max-w-3xl mx-auto text-primary-foreground/75 text-base md:text-lg leading-relaxed">
-              Meet the faculty members shaping future-ready leaders through academic rigor, industry relevance,
-              and mentorship at Ashoka School of Business.
+              Meet the faculty members shaping future-ready leaders through
+              academic rigor, industry relevance, and mentorship at Ashoka
+              School of Business.
             </p>
           </SectionFadeIn>
         </div>
@@ -375,21 +356,27 @@ const OurFacultyPage = () => {
       <div className="bg-primary px-4 py-4">
         <div className="container-wide mx-auto grid grid-cols-3 gap-4 text-center">
           <div>
-            <p className="text-xl md:text-3xl font-black text-primary-foreground">{totalFaculty}</p>
+            <p className="text-xl md:text-3xl font-black text-primary-foreground">
+              {totalFaculty}
+            </p>
             <p className="text-[0.65rem] md:text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/75">
               Faculty Profiles
             </p>
           </div>
           <div>
-            <p className="text-xl md:text-3xl font-black text-primary-foreground">Industry + Academia</p>
+            <p className="text-xl md:text-3xl font-black text-primary-foreground">
+              Industry + Academia
+            </p>
             <p className="text-[0.65rem] md:text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/75">
               Practical Learning Lens
             </p>
           </div>
           <div>
-            <p className="text-xl md:text-3xl font-black text-primary-foreground">Tap to View</p>
+            <p className="text-xl md:text-3xl font-black text-primary-foreground">
+              Profiles on Page
+            </p>
             <p className="text-[0.65rem] md:text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/75">
-              Complete Profile Details
+              No Click Required
             </p>
           </div>
         </div>
@@ -397,124 +384,101 @@ const OurFacultyPage = () => {
 
       <section className="relative px-4 md:px-8 pb-20">
         <div className="container-wide px-4">
-          <div className="mx-auto max-w-7xl pt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="mx-auto max-w-7xl pt-10 grid gap-6 lg:grid-cols-2">
             {facultyMembers.map((member, index) => (
-              <SectionFadeIn key={member.name} delay={Math.min(index * 0.05, 0.36)}>
-                <button
-                  type="button"
-                  onClick={() => setSelectedFaculty(member)}
-                  className="group text-left w-full h-full rounded-[1.2rem] border border-border/70 bg-white shadow-[0_4px_24px_rgba(15,23,42,0.08)] hover:shadow-[0_12px_40px_rgba(15,23,42,0.16)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-                >
-                  <div className="aspect-[4/4.6] w-full overflow-hidden bg-secondary">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="h-full w-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    />
+              <SectionFadeIn
+                key={member.name}
+                delay={Math.min(index * 0.05, 0.36)}
+              >
+                <article className="group text-left w-full overflow-hidden rounded-[1.2rem] border border-border/70 bg-white shadow-[0_4px_24px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(15,23,42,0.16)]">
+                  <div className="grid md:grid-cols-[210px_1fr] lg:min-h-[380px]">
+                    <div className="order-1 md:order-1 bg-secondary md:h-full">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="h-[280px] md:h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+
+                    <div className="order-2 md:order-2 px-4 py-4 md:px-5 md:py-5 space-y-3">
+                      <div>
+                        <h3 className="text-base md:text-lg font-black text-primary leading-tight">
+                          {member.name}
+                        </h3>
+                        <p className="mt-1 text-xs md:text-sm text-muted-foreground leading-snug">
+                          {member.role}
+                        </p>
+                      </div>
+
+                      {member.qualification ? (
+                        <div>
+                          <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
+                            Qualification
+                          </p>
+                          <p className="mt-1 text-xs text-foreground/85 leading-relaxed">
+                            {member.qualification}
+                          </p>
+                        </div>
+                      ) : null}
+
+                      {member.experience ? (
+                        <div>
+                          <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
+                            Experience
+                          </p>
+                          <p className="mt-1 text-xs text-foreground/85 leading-relaxed">
+                            {member.experience}
+                          </p>
+                        </div>
+                      ) : null}
+
+                      {member.specialization ? (
+                        <div>
+                          <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
+                            Specialization
+                          </p>
+                          <p className="mt-1 text-xs text-foreground/85 leading-relaxed">
+                            {member.specialization}
+                          </p>
+                        </div>
+                      ) : null}
+
+                      {member.area ? (
+                        <div>
+                          <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
+                            Area
+                          </p>
+                          <p className="mt-1 text-xs text-foreground/85 leading-relaxed">
+                            {member.area}
+                          </p>
+                        </div>
+                      ) : null}
+
+                      {member.bio && member.bio.length > 0 ? (
+                        <div>
+                          <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
+                            Profile
+                          </p>
+                          <div className="mt-1.5 space-y-1.5 max-h-[112px] overflow-auto pr-1">
+                            {member.bio.map((paragraph) => (
+                              <p
+                                key={paragraph}
+                                className="text-xs text-foreground/85 leading-relaxed"
+                              >
+                                {paragraph}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
-                  <div className="px-4 py-4">
-                    <h3 className="text-sm md:text-base font-black text-primary leading-tight line-clamp-2">{member.name}</h3>
-                    <p className="mt-2 text-xs md:text-sm text-muted-foreground leading-snug line-clamp-2">{member.role}</p>
-                  </div>
-                </button>
+                </article>
               </SectionFadeIn>
             ))}
           </div>
         </div>
       </section>
-
-      <Dialog open={!!selectedFaculty} onOpenChange={(open) => !open && setSelectedFaculty(null)}>
-        {selectedFaculty ? (
-          <DialogContent className="w-[94vw] max-w-4xl max-h-[85vh] overflow-y-auto p-0" showCloseButton>
-            <div className="grid md:grid-cols-[260px_1fr] gap-0">
-              <div className="bg-secondary p-4 md:p-6">
-                <div className="overflow-hidden rounded-xl border border-border shadow-sm bg-white">
-                  <img
-                    src={selectedFaculty.image}
-                    alt={selectedFaculty.name}
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
-              </div>
-              <div className="p-5 md:p-6">
-                <DialogHeader>
-                  <DialogTitle className="text-xl md:text-2xl font-black text-primary leading-tight">
-                    {selectedFaculty.name}
-                  </DialogTitle>
-                  <DialogDescription className="text-sm md:text-base font-semibold text-muted-foreground">
-                    {selectedFaculty.role}
-                  </DialogDescription>
-                </DialogHeader>
-
-                <div className="mt-4 flex items-center justify-between gap-4 border-y border-border/70 py-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                    Profile {currentIndex + 1} of {facultyMembers.length}
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={showPreviousFaculty}
-                      className="rounded-md border border-border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-foreground hover:bg-secondary transition-colors"
-                    >
-                      Previous
-                    </button>
-                    <button
-                      type="button"
-                      onClick={showNextFaculty}
-                      className="rounded-md border border-primary/60 bg-primary px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground hover:bg-primary/90 transition-colors"
-                    >
-                      Next
-                    </button>
-                  </div>
-                </div>
-
-                <div className="mt-5 space-y-4">
-                  {selectedFaculty.qualification ? (
-                    <div>
-                      <p className="text-[0.7rem] uppercase tracking-[0.2em] text-primary font-bold">Qualification</p>
-                      <p className="mt-1 text-sm text-foreground/90 leading-relaxed">{selectedFaculty.qualification}</p>
-                    </div>
-                  ) : null}
-
-                  {selectedFaculty.experience ? (
-                    <div>
-                      <p className="text-[0.7rem] uppercase tracking-[0.2em] text-primary font-bold">Experience</p>
-                      <p className="mt-1 text-sm text-foreground/90 leading-relaxed">{selectedFaculty.experience}</p>
-                    </div>
-                  ) : null}
-
-                  {selectedFaculty.specialization ? (
-                    <div>
-                      <p className="text-[0.7rem] uppercase tracking-[0.2em] text-primary font-bold">Specialization</p>
-                      <p className="mt-1 text-sm text-foreground/90 leading-relaxed">{selectedFaculty.specialization}</p>
-                    </div>
-                  ) : null}
-
-                  {selectedFaculty.area ? (
-                    <div>
-                      <p className="text-[0.7rem] uppercase tracking-[0.2em] text-primary font-bold">Area</p>
-                      <p className="mt-1 text-sm text-foreground/90 leading-relaxed">{selectedFaculty.area}</p>
-                    </div>
-                  ) : null}
-
-                  {selectedFaculty.bio && selectedFaculty.bio.length > 0 ? (
-                    <div>
-                      <p className="text-[0.7rem] uppercase tracking-[0.2em] text-primary font-bold">Profile</p>
-                      <div className="mt-2 space-y-2">
-                        {selectedFaculty.bio.map((paragraph) => (
-                          <p key={paragraph} className="text-sm text-foreground/90 leading-relaxed">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-            </div>
-          </DialogContent>
-        ) : null}
-      </Dialog>
     </div>
   );
 };

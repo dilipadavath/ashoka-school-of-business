@@ -3,15 +3,20 @@ import TextReveal from "@/components/TextReveal";
 import HoverCardAnimation from "@/components/HoverCardAnimation";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import infrastructureVideo from "@/Chanakya.mp4";
+import infrastructureVideo from "@/asb-event-Made-with-Clipchamp.compressed.mp4";
 
-const galleryModules = import.meta.glob("../assets/gallery/*.{png,webp,jpg,jpeg}", {
-  eager: true,
-  import: "default",
-}) as Record<string, string>;
+const galleryModules = import.meta.glob(
+  "../assets/gallery/*.{png,webp,jpg,jpeg}",
+  {
+    eager: true,
+    import: "default",
+  },
+) as Record<string, string>;
 
 const galleryImages = Object.entries(galleryModules)
-  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }))
+  .sort(([a], [b]) =>
+    a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }),
+  )
   .map(([, src]) => src);
 
 const InfrastructurePage = () => {
@@ -19,7 +24,9 @@ const InfrastructurePage = () => {
 
   const showPreviousImage = () => {
     if (selectedIndex === null) return;
-    setSelectedIndex((selectedIndex - 1 + galleryImages.length) % galleryImages.length);
+    setSelectedIndex(
+      (selectedIndex - 1 + galleryImages.length) % galleryImages.length,
+    );
   };
 
   const showNextImage = () => {
@@ -44,10 +51,22 @@ const InfrastructurePage = () => {
               </h1>
             </TextReveal>
             <p className="mt-6 max-w-2xl text-primary-foreground/75 text-base md:text-lg leading-relaxed">
-              ASB offers access to various facilities to render a remarkable learning experience to the students. The campus is located on the scenic outskirts of Hyderabad and provides facilities for both academic and leisure purposes. ASB houses interactive and digital classrooms. It also has 2 Seminar halls with a capacity of 100 - 200+ students respectively to organise various programs. ASB consists of a space known as the Ashoka Hub which offers brainstorming sessions to aspiring entrepreneurs and students from different disciplines. It also constitutes a seminar hall with a capacity of 200+ students to hold guest lectures. ASB comprises a library with the latest journals and books and exceptional hostel facilities for both boys and girls within the campus.
+              ASB offers access to various facilities to render a remarkable
+              learning experience to the students. The campus is located on the
+              scenic outskirts of Hyderabad and provides facilities for both
+              academic and leisure purposes. ASB houses interactive and digital
+              classrooms. It also has 2 Seminar halls with a capacity of 100 -
+              200+ students respectively to organise various programs. ASB
+              consists of a space known as the Ashoka Hub which offers
+              brainstorming sessions to aspiring entrepreneurs and students from
+              different disciplines. It also constitutes a seminar hall with a
+              capacity of 200+ students to hold guest lectures. ASB comprises a
+              library with the latest journals and books and exceptional hostel
+              facilities for both boys and girls within the campus.
             </p>
             <p className="mt-6 max-w-2xl text-primary-foreground/90 text-base md:text-lg leading-relaxed font-medium">
-              Experience the energy of learning, growth, and ambition at Ashoka School of Business, Hyderabad
+              Experience the energy of learning, growth, and ambition at Ashoka
+              School of Business, Hyderabad
             </p>
           </SectionFadeIn>
 
@@ -98,9 +117,17 @@ const InfrastructurePage = () => {
         </div>
       </section>
 
-      <Dialog open={selectedIndex !== null} onOpenChange={(open) => !open && setSelectedIndex(null)}>
-        <DialogContent showCloseButton={false} className="max-w-[min(94vw,1400px)] border-none bg-transparent p-0 shadow-none">
-          <DialogTitle className="sr-only">Infrastructure Gallery Image</DialogTitle>
+      <Dialog
+        open={selectedIndex !== null}
+        onOpenChange={(open) => !open && setSelectedIndex(null)}
+      >
+        <DialogContent
+          showCloseButton={false}
+          className="max-w-[min(94vw,1400px)] border-none bg-transparent p-0 shadow-none"
+        >
+          <DialogTitle className="sr-only">
+            Infrastructure Gallery Image
+          </DialogTitle>
           {selectedIndex !== null && (
             <div className="relative">
               <button

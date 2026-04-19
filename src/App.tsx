@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
 import ScrollToTop from "@/components/ScrollToTop";
+import CursorDot from "@/components/CursorDot";
 import Index from "./pages/Index";
 import BBAPage from "./pages/BBAPage";
 import PGDMPage from "./pages/PGDMPage";
@@ -65,6 +66,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <CursorDot />
         <Navbar />
         <Routes>
           <Route path="/" element={<Index />} />
