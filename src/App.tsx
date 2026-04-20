@@ -68,8 +68,9 @@ const App = () => (
         <ScrollToTop />
         <CursorDot />
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Index />} />
+        <div className="[&>div]:!pt-0 [&>main]:!pt-0">
+          <Routes>
+            <Route path="/" element={<Index />} />
           <Route path="/bba" element={<BBAPage />} />
           <Route path="/pgdm" element={<PGDMPage />} />
           <Route path="/qms" element={<PGDMSecuritiesPage />} />
@@ -124,9 +125,10 @@ const App = () => (
           <Route path="/faculty-openings" element={<FacultyOpeningsPage />} />
           <Route path="/register-now" element={<RegisterNowPage />} />
           <Route path="/enquiry-now" element={<EnquiryNowPage />} />
-          <Route path="/application-form" element={<ApplicationFormPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route path="/application-form" element={<ApplicationFormPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
         <Footer />
         <FloatingButtons />
       </BrowserRouter>
