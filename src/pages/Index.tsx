@@ -47,6 +47,7 @@ const whyChooseUsSlides = [
     image: smartClassroom,
     bgColor: "bg-[#7C1F36]",
     icon: GraduationCap,
+    href: "/qms",
   },
   {
     title: "Global Immersion Program",
@@ -55,6 +56,7 @@ const whyChooseUsSlides = [
     image: awardCeremony,
     bgColor: "bg-[#1F3A5F]",
     icon: Globe2,
+    href: "/gip",
   },
   {
     title: "Innovation & EIR Ecosystem",
@@ -63,6 +65,7 @@ const whyChooseUsSlides = [
     image: campusHub,
     bgColor: "bg-[#2B5B4F]",
     icon: Sparkles,
+    href: "/eir",
   },
   {
     title: "Sprawling Smart Campus",
@@ -71,6 +74,7 @@ const whyChooseUsSlides = [
     image: campusBuilding,
     bgColor: "bg-[#3F3D56]",
     icon: Compass,
+    href: "/infrastructure",
   },
   {
     title: "360 Degree Grooming",
@@ -107,7 +111,7 @@ const Index = () => {
   return (
     <div className="overflow-x-clip">
       {/* Hero */}
-      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-24 md:pt-28">
+      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-0 md:pt-20">
         <video
           autoPlay
           loop
@@ -245,13 +249,23 @@ const Index = () => {
                             <p className="text-primary-foreground/85 text-base sm:text-lg leading-relaxed mb-5 sm:mb-6 md:mb-7 max-w-lg">
                               {slide.description}
                             </p>
-                            <div className="mt-auto overflow-hidden rounded-xl sm:rounded-[1.25rem] border border-white/20 bg-white/10">
-                              <img
-                                src={slide.image}
-                                alt={slide.title}
-                                className="h-36 w-full object-cover sm:h-44 md:h-52"
-                                loading="lazy"
-                              />
+                            <div className="mt-auto space-y-4">
+                              {slide.href ? (
+                                <Link
+                                  to={slide.href}
+                                  className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-white hover:text-charcoal"
+                                >
+                                  Explore
+                                </Link>
+                              ) : null}
+                              <div className="overflow-hidden rounded-xl sm:rounded-[1.25rem] border border-white/20 bg-white/10">
+                                <img
+                                  src={slide.image}
+                                  alt={slide.title}
+                                  className="h-36 w-full object-cover sm:h-44 md:h-52"
+                                  loading="lazy"
+                                />
+                              </div>
                             </div>
                           </article>
                         </CarouselItem>
@@ -290,8 +304,8 @@ const Index = () => {
       <PlacementCarousel />
 
       {/* Parallax CTA */}
-      <ParallaxSection bgImage={campusImg1} className="py-24 md:py-32">
-        <div className="text-center px-4">
+      <ParallaxSection bgImage={campusImg1} className="section-padding">
+        <div className="container-wide text-center">
           <SectionFadeIn>
             <h2 className="text-3xl md:text-5xl font-black text-primary-foreground mb-4">
               A Campus Built for Excellence
@@ -308,11 +322,11 @@ const Index = () => {
       <section id="campus" className="section-padding bg-secondary">
         <div className="container-wide">
           <SectionFadeIn>
-            <div className="text-center mb-12">
+            <div className="text-center mb-10 md:mb-12">
               <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">
                 Campus Life
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight">
                 World-Class Campus Facilities
               </h2>
             </div>
@@ -383,8 +397,8 @@ const Index = () => {
       </section>
 
       {/* Parallax Graduation */}
-      <ParallaxSection bgImage={graduation} className="py-24 md:py-32">
-        <div className="text-center px-4">
+      <ParallaxSection bgImage={graduation} className="section-padding">
+        <div className="container-wide text-center">
           <SectionFadeIn>
             <h2 className="text-3xl md:text-5xl font-black text-primary-foreground mb-4">
               Shape Your Tomorrow

@@ -95,13 +95,13 @@ const whyAsbItems = [
 
 const WhyASBPage = () => {
   return (
-    <div className="pt-20 bg-background overflow-x-clip">
-      <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground px-4 md:px-8 py-14 md:py-20">
+    <div className="pt-0 md:pt-20 bg-background overflow-x-clip">
+      <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground section-padding">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-28 -left-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
           <div className="absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-primary/15 blur-3xl" />
         </div>
-        <div className="container-wide relative z-10 px-4 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+        <div className="container-wide relative z-10 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
           <SectionFadeIn>
             <p className="text-primary font-semibold text-sm uppercase tracking-[0.28em] mb-4">
               Why ASB
@@ -153,8 +153,8 @@ const WhyASBPage = () => {
         </div>
       </section>
 
-      <section className="px-4 md:px-8 py-14 md:py-16 bg-gradient-to-b from-white to-secondary/35">
-        <div className="container-wide px-4">
+      <section className="section-padding bg-gradient-to-b from-white to-secondary/35">
+        <div className="container-wide">
           <SectionFadeIn>
             <div className="grid gap-4 md:grid-cols-4">
               {whyAsbItems.map((item, index) => (
@@ -179,8 +179,8 @@ const WhyASBPage = () => {
         </div>
       </section>
 
-      <section className="px-4 md:px-8 pb-20">
-        <div className="container-wide px-4 space-y-8 md:space-y-10">
+      <section className="section-padding">
+        <div className="container-wide space-y-8 md:space-y-10">
           {whyAsbItems.map((item, index) => (
             <SectionFadeIn key={item.id} delay={Math.min(index * 0.04, 0.24)}>
               <section

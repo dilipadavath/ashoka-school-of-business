@@ -322,14 +322,14 @@ const OurFacultyPage = () => {
   const totalFaculty = useMemo(() => facultyMembers.length, []);
 
   return (
-    <div className="pt-20 bg-background overflow-x-clip">
-      <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground px-4 md:px-8 py-14 md:py-20">
+    <div className="pt-0 md:pt-20 bg-background overflow-x-clip">
+      <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground section-padding">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-28 -left-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
           <div className="absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-primary/15 blur-3xl" />
           <div className="absolute inset-y-0 left-1/2 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent" />
         </div>
-        <div className="container-wide relative z-10 px-4 text-center">
+        <div className="container-wide relative z-10 text-center">
           <SectionFadeIn>
             <p className="text-primary font-semibold text-sm uppercase tracking-[0.28em] mb-4">
               Explore ASB
@@ -382,17 +382,17 @@ const OurFacultyPage = () => {
         </div>
       </div>
 
-      <section className="relative px-4 md:px-8 pb-20">
-        <div className="container-wide px-4">
-          <div className="mx-auto max-w-7xl pt-10 grid gap-6 lg:grid-cols-2">
+      <section className="relative section-padding">
+        <div className="container-wide">
+          <div className="mx-auto max-w-5xl pt-10 grid gap-8">
             {facultyMembers.map((member, index) => (
               <SectionFadeIn
                 key={member.name}
                 delay={Math.min(index * 0.05, 0.36)}
               >
-                <article className="group text-left w-full overflow-hidden rounded-[1.2rem] border border-border/70 bg-white shadow-[0_4px_24px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(15,23,42,0.16)]">
-                  <div className="grid md:grid-cols-[210px_1fr] lg:min-h-[380px]">
-                    <div className="order-1 md:order-1 bg-secondary md:h-full">
+                <article className="group text-left w-full overflow-hidden rounded-[1.6rem] border border-border/70 bg-gradient-to-br from-white to-secondary/40 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(15,23,42,0.16)]">
+                  <div className="grid md:grid-cols-[230px_1fr] lg:min-h-[380px]">
+                    <div className="order-1 md:order-1 bg-secondary/70 md:h-full">
                       <img
                         src={member.image}
                         alt={member.name}
@@ -400,12 +400,12 @@ const OurFacultyPage = () => {
                       />
                     </div>
 
-                    <div className="order-2 md:order-2 px-4 py-4 md:px-5 md:py-5 space-y-3">
+                    <div className="order-2 md:order-2 px-5 py-5 md:px-6 md:py-6 space-y-4">
                       <div>
-                        <h3 className="text-base md:text-lg font-black text-primary leading-tight">
+                        <h3 className="text-lg md:text-xl font-black text-primary leading-tight">
                           {member.name}
                         </h3>
-                        <p className="mt-1 text-xs md:text-sm text-muted-foreground leading-snug">
+                        <p className="mt-1 text-sm text-muted-foreground leading-snug">
                           {member.role}
                         </p>
                       </div>
@@ -415,7 +415,7 @@ const OurFacultyPage = () => {
                           <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
                             Qualification
                           </p>
-                          <p className="mt-1 text-xs text-foreground/85 leading-relaxed">
+                          <p className="mt-1 text-sm text-foreground/85 leading-relaxed">
                             {member.qualification}
                           </p>
                         </div>
@@ -426,7 +426,7 @@ const OurFacultyPage = () => {
                           <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
                             Experience
                           </p>
-                          <p className="mt-1 text-xs text-foreground/85 leading-relaxed">
+                          <p className="mt-1 text-sm text-foreground/85 leading-relaxed">
                             {member.experience}
                           </p>
                         </div>
@@ -437,7 +437,7 @@ const OurFacultyPage = () => {
                           <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
                             Specialization
                           </p>
-                          <p className="mt-1 text-xs text-foreground/85 leading-relaxed">
+                          <p className="mt-1 text-sm text-foreground/85 leading-relaxed">
                             {member.specialization}
                           </p>
                         </div>
@@ -448,7 +448,7 @@ const OurFacultyPage = () => {
                           <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
                             Area
                           </p>
-                          <p className="mt-1 text-xs text-foreground/85 leading-relaxed">
+                          <p className="mt-1 text-sm text-foreground/85 leading-relaxed">
                             {member.area}
                           </p>
                         </div>
@@ -459,11 +459,11 @@ const OurFacultyPage = () => {
                           <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
                             Profile
                           </p>
-                          <div className="mt-1.5 space-y-1.5 max-h-[112px] overflow-auto pr-1">
+                          <div className="mt-1.5 space-y-2 max-h-[132px] overflow-auto pr-1">
                             {member.bio.map((paragraph) => (
                               <p
                                 key={paragraph}
-                                className="text-xs text-foreground/85 leading-relaxed"
+                                className="text-sm text-foreground/85 leading-relaxed"
                               >
                                 {paragraph}
                               </p>
