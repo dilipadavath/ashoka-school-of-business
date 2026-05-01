@@ -125,7 +125,7 @@ const PlacementsPage = () => {
 
         <div className="container-wide relative z-10">
           <SectionFadeIn>
-            <p className="text-primary font-semibold text-sm uppercase tracking-[0.24em] mb-3">
+            <p className="text-lg text-primary font-semibold uppercase tracking-[0.28em] mb-4">
               Placements
             </p>
             <TextReveal variant="word" delay={0.1} stagger={0.08}>

@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import heroAbout from "@/assets/hero-about.jpg";
+import heroAbout from "@/assets/About_banner.jpeg";
 import aboutImg1 from "@/assets/about img 1.webp";
 import aboutImg2 from "@/assets/about img2.webp";
 import founderChairmanImg from "@/assets/Founder and Chairman.webp";
@@ -43,11 +43,11 @@ const AboutPage = () => {
         <div className="container-wide relative z-10">
           <SectionFadeIn>
             <div className="max-w-3xl">
-              <p className="text-primary-foreground/75 text-sm font-semibold uppercase tracking-[0.28em] mb-4">
+              <p className="text-lg text-primary font-semibold uppercase tracking-[0.28em] mb-4">
                 About
               </p>
               <TextReveal variant="word" delay={0.1} stagger={0.08}>
-                <h1 className="font-display text-4xl md:text-6xl font-black text-primary-foreground mb-5 tracking-tight">
+                <h1 className="font-display text-4xl md:text-6xl font-black text-primary mb-5 tracking-tight">
                   About
                 </h1>
               </TextReveal>

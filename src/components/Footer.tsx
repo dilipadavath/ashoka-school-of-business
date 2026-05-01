@@ -67,6 +67,8 @@ const Footer = () => (
                 <a
                   key={label}
                   href={path}
+                  target="_blank"
+                  rel="noreferrer"
                   className="inline-flex hover:text-primary transition-colors"
                 >
                   {label}

@@ -1,5 +1,5 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
-import committeeImage from "@/assets/women-protection-cell.webp";
+import committeeImage from "@/assets/Women_in_academic_discussion.jpeg";
 
 const committeeMembers = [
   {

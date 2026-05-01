@@ -68,6 +68,50 @@ const InfrastructurePage = () => {
               Experience the energy of learning, growth, and ambition at Ashoka
               School of Business, Hyderabad
             </p>
+
+            <form
+              name="campus-visit"
+              onSubmit={(event) => event.preventDefault()}
+              className="mt-8 grid gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur sm:grid-cols-[1.3fr_1fr_1fr_auto]"
+            >
+              <label className="sr-only" htmlFor="campus-visit-name">
+                Name
+              </label>
+              <input
+                id="campus-visit-name"
+                name="campus-visit"
+                type="text"
+                placeholder="Name"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60"
+              />
+
+              <label className="sr-only" htmlFor="campus-visit-date">
+                Booking date
+              </label>
+              <input
+                id="campus-visit-date"
+                name="booking-date"
+                type="date"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60"
+              />
+
+              <label className="sr-only" htmlFor="campus-visit-time">
+                Time
+              </label>
+              <input
+                id="campus-visit-time"
+                name="time"
+                type="time"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60"
+              />
+
+              <button
+                type="submit"
+                className="h-11 w-full rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
+              >
+                Book Visit
+              </button>
+            </form>
           </SectionFadeIn>
 
           <SectionFadeIn delay={0.12}>

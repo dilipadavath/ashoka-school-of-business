@@ -7,7 +7,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import globalImmersion from "@/assets/global-immersion.jpg";
+import globalImmersion from "@/assets/placements.jpeg";
 import campusLife from "@/assets/campus-life.jpg";
 import campusAerial from "@/assets/campus-aerial.jpg";
 import leadership from "@/assets/leadership.jpg";
@@ -126,6 +126,14 @@ const pgdmTiles = [
       "Decision Intelligence and Automation",
     ],
   },
+  {
+    title: "Securities Market",
+    path: "/qms",
+    image: pgdmSeminar,
+    description:
+      "Build capital markets expertise with practical exposure to securities, trading, and compliance.",
+    points: ["Securities & Portfolio Basics", "Market Operations & Compliance"],
+  },
 ];
 
 const testimonials = [
@@ -148,7 +156,6 @@ const testimonials = [
     batch: "Batch 2021–23 · Tech Mahindra",
     image: lingesImg,
     imagePosition: "50% 50%",
-    imageOffsetY: -6,
     paragraphs: [
       "I'm Lingeswaran S, a proud alumnus of Ashoka School of Business (Batch 2021-2023) and currently working as a Business Analyst at Tech Mahindra. I chose ASB because it offered a perfect balance—Hyderabad's vibrant exposure, an AI and analytics-focused curriculum, and an affordable fee structure compared to other B-schools.",
       "I specialized in Marketing with Marketing Analytics and AI ML as my minor. The practical, well-designed curriculum gave me the confidence to tackle analytics-based questions during interviews and secure a great placement through campus recruitment, with a 100% ROI.",
@@ -186,7 +193,6 @@ const testimonials = [
     batch: "Ashoka School of Business, Hyderabad",
     image: shaikImg,
     imagePosition: "50% 50%",
-    imageOffsetY: -4,
     paragraphs: [
       "Greetings of the Day. I'm Shaik Ibrahim, an Alumni member of Ashoka School of Business, Hyderabad.",
       "Certainly, the role of the faculty members at Ashoka School of Business was crucial in determining my learning experience during my Postgraduate Diploma in Management (PGDM).",
@@ -664,12 +670,12 @@ const PlacementCarousel = () => {
               </h3>
             </div>
 
-            <div className="flex flex-wrap xl:flex-nowrap border-t border-white/10">
+            <div className="flex flex-wrap border-t border-white/10">
               {pgdmTiles.map((tile) => (
                 <Link
                   key={tile.title}
                   to={tile.path}
-                  className="group relative h-[420px] md:h-[500px] w-full sm:w-1/2 xl:w-[20%] overflow-hidden border-b border-white/10 xl:border-b-0 xl:border-r xl:last:border-r-0"
+                  className="group relative h-[420px] md:h-[500px] w-full sm:w-1/2 xl:w-1/3 overflow-hidden border-b border-white/10 xl:border-b-0 xl:border-r xl:last:border-r-0"
                 >
                   <div className="absolute inset-0">
                     <img
@@ -1130,10 +1136,9 @@ const PlacementCarousel = () => {
                         <img
                           src={t.image}
                           alt={t.name}
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-contain"
                           style={{
                             objectPosition: t.imagePosition ?? "50% 30%",
-                            transform: `translateY(${t.imageOffsetY ?? 0}px)`,
                           }}
                           loading="lazy"
                         />

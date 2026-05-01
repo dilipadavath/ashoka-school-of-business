@@ -1,5 +1,5 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
-import committeeImage from "@/assets/intetnal-complaint-committee.webp";
+import committeeImage from "@/assets/InternalCommittee.jpeg";
 
 const staffRows = [
   {

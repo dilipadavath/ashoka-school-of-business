@@ -13,7 +13,7 @@ const PathPage = () => {
 
         <div className="container-wide relative z-10 grid gap-10 lg:grid-cols-[1fr_1.05fr] items-center">
           <SectionFadeIn>
-            <p className="text-primary font-semibold text-sm uppercase tracking-[0.28em] mb-4">
+            <p className="inline-flex rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.24em]">
               Why ASB
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95] text-primary-foreground">

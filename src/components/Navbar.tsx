@@ -364,6 +364,8 @@ const Navbar = () => {
                   <a
                     key={item.label}
                     href={item.path}
+                    target="_blank"
+                    rel="noreferrer"
                     className="px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:text-primary"
                   >
                     {item.label}
@@ -512,6 +514,8 @@ const Navbar = () => {
                 <a
                   key={item.label}
                   href={item.path}
+                  target="_blank"
+                  rel="noreferrer"
                   className="block px-6 py-3 text-sm font-medium text-foreground hover:text-primary"
                 >
                   {item.label}

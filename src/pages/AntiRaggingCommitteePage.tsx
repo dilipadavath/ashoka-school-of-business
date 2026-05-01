@@ -1,5 +1,5 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
-import committeeImage from "@/assets/grievances-redressal-committee.webp";
+import committeeImage from "@/assets/Anti-ragging.jpeg";
 
 const facultyRows = [
   {

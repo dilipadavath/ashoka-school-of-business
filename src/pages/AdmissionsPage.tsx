@@ -1,7 +1,7 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
 import { ArrowRight, Download } from "lucide-react";
 import { Link } from "react-router-dom";
-import eligibilityImage from "@/assets/Eligibility.webp";
+import eligibilityImage from "@/assets/Admissions.jpeg";
 import {
   Accordion,
   AccordionContent,
