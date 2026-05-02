@@ -35,15 +35,15 @@ const InfrastructurePage = () => {
   };
 
   return (
-    <div className="pt-20 bg-background overflow-x-clip">
-      <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground px-4 md:px-8 py-14 md:py-20">
+    <div className="pt-0 md:pt-20 bg-background overflow-x-clip">
+      <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground section-padding">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-28 -left-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
           <div className="absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-primary/15 blur-3xl" />
           <div className="absolute inset-y-0 left-1/2 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent" />
         </div>
 
-        <div className="container-wide relative z-10 px-4 grid gap-10 lg:grid-cols-[1fr_1.05fr] items-center">
+        <div className="container-wide relative z-10 grid gap-10 lg:grid-cols-[1fr_1.05fr] items-center">
           <SectionFadeIn>
             <TextReveal variant="word" delay={0.1} stagger={0.08}>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95] text-primary-foreground">
@@ -68,6 +68,50 @@ const InfrastructurePage = () => {
               Experience the energy of learning, growth, and ambition at Ashoka
               School of Business, Hyderabad
             </p>
+
+            <form
+              name="campus-visit"
+              onSubmit={(event) => event.preventDefault()}
+              className="mt-8 grid gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur sm:grid-cols-[1.3fr_1fr_1fr_auto]"
+            >
+              <label className="sr-only" htmlFor="campus-visit-name">
+                Name
+              </label>
+              <input
+                id="campus-visit-name"
+                name="campus-visit"
+                type="text"
+                placeholder="Name"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60"
+              />
+
+              <label className="sr-only" htmlFor="campus-visit-date">
+                Booking date
+              </label>
+              <input
+                id="campus-visit-date"
+                name="booking-date"
+                type="date"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60"
+              />
+
+              <label className="sr-only" htmlFor="campus-visit-time">
+                Time
+              </label>
+              <input
+                id="campus-visit-time"
+                name="time"
+                type="time"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60"
+              />
+
+              <button
+                type="submit"
+                className="h-11 w-full rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
+              >
+                Book Visit
+              </button>
+            </form>
           </SectionFadeIn>
 
           <SectionFadeIn delay={0.12}>
@@ -88,8 +132,8 @@ const InfrastructurePage = () => {
         </div>
       </section>
 
-      <section className="px-4 md:px-8 py-14 md:py-16 bg-gradient-to-b from-background to-secondary/30">
-        <div className="container-wide px-4">
+      <section className="section-padding bg-gradient-to-b from-background to-secondary/30">
+        <div className="container-wide">
           <SectionFadeIn>
             <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
               {galleryImages.map((image, index) => (

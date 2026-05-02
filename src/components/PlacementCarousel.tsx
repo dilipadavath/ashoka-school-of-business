@@ -7,7 +7,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import globalImmersion from "@/assets/global-immersion.jpg";
+import globalImmersion from "@/assets/placements.jpeg";
 import campusLife from "@/assets/campus-life.jpg";
 import campusAerial from "@/assets/campus-aerial.jpg";
 import leadership from "@/assets/leadership.jpg";
@@ -126,6 +126,14 @@ const pgdmTiles = [
       "Decision Intelligence and Automation",
     ],
   },
+  {
+    title: "Securities Market",
+    path: "/qms",
+    image: pgdmSeminar,
+    description:
+      "Build capital markets expertise with practical exposure to securities, trading, and compliance.",
+    points: ["Securities & Portfolio Basics", "Market Operations & Compliance"],
+  },
 ];
 
 const testimonials = [
@@ -148,7 +156,6 @@ const testimonials = [
     batch: "Batch 2021–23 · Tech Mahindra",
     image: lingesImg,
     imagePosition: "50% 50%",
-    imageOffsetY: -6,
     paragraphs: [
       "I'm Lingeswaran S, a proud alumnus of Ashoka School of Business (Batch 2021-2023) and currently working as a Business Analyst at Tech Mahindra. I chose ASB because it offered a perfect balance—Hyderabad's vibrant exposure, an AI and analytics-focused curriculum, and an affordable fee structure compared to other B-schools.",
       "I specialized in Marketing with Marketing Analytics and AI ML as my minor. The practical, well-designed curriculum gave me the confidence to tackle analytics-based questions during interviews and secure a great placement through campus recruitment, with a 100% ROI.",
@@ -186,7 +193,6 @@ const testimonials = [
     batch: "Ashoka School of Business, Hyderabad",
     image: shaikImg,
     imagePosition: "50% 50%",
-    imageOffsetY: -4,
     paragraphs: [
       "Greetings of the Day. I'm Shaik Ibrahim, an Alumni member of Ashoka School of Business, Hyderabad.",
       "Certainly, the role of the faculty members at Ashoka School of Business was crucial in determining my learning experience during my Postgraduate Diploma in Management (PGDM).",
@@ -425,11 +431,11 @@ const PlacementCarousel = () => {
     <section className="section-padding bg-secondary">
       <div className="container-wide">
         <SectionFadeIn>
-          <div className="text-center mb-10">
+          <div className="text-center mb-10 md:mb-12">
             <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">
               Placements
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight">
               Our Students, Our Pride
             </h2>
             <p className="text-muted-foreground mt-2">
@@ -487,7 +493,7 @@ const PlacementCarousel = () => {
 
         {/* ── Recruiters / Company Logos ── */}
         <SectionFadeIn>
-          <div className="mt-14 rounded-[1.75rem] border border-border/60 bg-background px-4 py-8 md:px-6 shadow-lg shadow-slate-900/5 overflow-hidden">
+          <div className="mt-12 md:mt-16 rounded-[1.75rem] border border-border/60 bg-background px-4 py-8 md:px-6 shadow-lg shadow-slate-900/5 overflow-hidden">
             <div className="text-center mb-6">
               <p className="text-primary font-semibold text-xs uppercase tracking-[0.22em] mb-2">
                 Recruiters
@@ -547,7 +553,7 @@ const PlacementCarousel = () => {
 
         {/* ── Knowledge & Experience ── */}
         <SectionFadeIn>
-          <div className="mt-16 rounded-[2rem] border border-border/60 bg-background p-6 md:p-10 shadow-lg shadow-slate-900/5">
+          <div className="mt-12 md:mt-16 rounded-[2rem] border border-border/60 bg-background p-5 sm:p-6 md:p-10 shadow-lg shadow-slate-900/5">
             <div className="grid lg:grid-cols-[1.08fr_1fr] gap-8 items-stretch">
               <div>
                 <p className="text-primary font-semibold text-xs uppercase tracking-[0.24em] mb-3">
@@ -607,9 +613,9 @@ const PlacementCarousel = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 grid-rows-[1fr_auto] overflow-hidden rounded-[1.5rem] border border-border/60">
-                <div className="bg-primary p-6 md:p-8 text-primary-foreground">
-                  <h4 className="text-3xl md:text-[2.15rem] font-black leading-none mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-[1fr_auto] overflow-hidden rounded-[1.5rem] border border-border/60">
+                <div className="bg-primary p-5 sm:p-6 md:p-8 text-primary-foreground">
+                  <h4 className="text-2xl sm:text-3xl md:text-[2.15rem] font-black leading-none mb-4">
                     Placements
                   </h4>
                   <p className="leading-[1.55] text-primary-foreground/95">
@@ -620,7 +626,7 @@ const PlacementCarousel = () => {
                   </p>
                 </div>
 
-                <div className="min-h-[220px]">
+                <div className="min-h-[180px] sm:min-h-[220px]">
                   <img
                     src={globalImmersion}
                     alt="Students in learning environment"
@@ -628,7 +634,7 @@ const PlacementCarousel = () => {
                   />
                 </div>
 
-                <div className="min-h-[220px]">
+                <div className="min-h-[180px] sm:min-h-[220px]">
                   <img
                     src={campusLife}
                     alt="ASB campus student interaction"
@@ -636,8 +642,10 @@ const PlacementCarousel = () => {
                   />
                 </div>
 
-                <div className="bg-charcoal p-6 md:p-8 text-primary-foreground">
-                  <h4 className="text-4xl font-black mb-4">We Connect</h4>
+                <div className="bg-charcoal p-5 sm:p-6 md:p-8 text-primary-foreground">
+                  <h4 className="text-3xl md:text-4xl font-black mb-4">
+                    We Connect
+                  </h4>
                   <p className="leading-relaxed text-primary-foreground/90">
                     Regular interactions with corporate experts and alums by way
                     of guest sessions including an address from people from
@@ -652,7 +660,7 @@ const PlacementCarousel = () => {
 
         {/* ── PGDM Specializations ── */}
         <SectionFadeIn>
-          <div className="mt-16 overflow-hidden rounded-[2rem] border border-charcoal/15 bg-[#0f1219] text-primary-foreground shadow-[0_24px_60px_rgba(2,8,23,0.35)]">
+          <div className="mt-12 md:mt-16 overflow-hidden rounded-[2rem] border border-charcoal/15 bg-[#0f1219] text-primary-foreground shadow-[0_24px_60px_rgba(2,8,23,0.35)]">
             <div className="border-b border-white/10 px-6 py-7 md:px-10 md:py-8">
               <p className="text-primary-foreground/70 text-xs font-semibold uppercase tracking-[0.22em] mb-2">
                 PGDM Pathways
@@ -662,12 +670,12 @@ const PlacementCarousel = () => {
               </h3>
             </div>
 
-            <div className="flex flex-wrap xl:flex-nowrap border-t border-white/10">
+            <div className="flex flex-wrap border-t border-white/10">
               {pgdmTiles.map((tile) => (
                 <Link
                   key={tile.title}
                   to={tile.path}
-                  className="group relative h-[420px] md:h-[500px] w-full sm:w-1/2 xl:w-[20%] overflow-hidden border-b border-white/10 xl:border-b-0 xl:border-r xl:last:border-r-0"
+                  className="group relative h-[420px] md:h-[500px] w-full sm:w-1/2 xl:w-1/3 overflow-hidden border-b border-white/10 xl:border-b-0 xl:border-r xl:last:border-r-0"
                 >
                   <div className="absolute inset-0">
                     <img
@@ -717,11 +725,11 @@ const PlacementCarousel = () => {
 
         {/* ── PGDM Opportunity Narrative ── */}
         <SectionFadeIn>
-          <div className="mt-8 overflow-hidden rounded-[2rem] border border-border/60 bg-background shadow-lg shadow-slate-900/5">
+          <div className="mt-12 md:mt-16 overflow-hidden rounded-[2rem] border border-border/60 bg-background shadow-lg shadow-slate-900/5">
             <div className="grid lg:grid-cols-2">
               <div>
                 <div className="bg-charcoal px-6 py-8 md:px-10 md:py-12 text-primary-foreground">
-                  <h3 className="text-4xl font-black mb-4">
+                  <h3 className="text-3xl md:text-4xl font-black mb-4">
                     We Are Open For Opportunities!
                   </h3>
                   <p className="text-primary-foreground/90 leading-relaxed text-lg">
@@ -769,8 +777,8 @@ const PlacementCarousel = () => {
 
         {/* ── International Immersions ── */}
         <SectionFadeIn>
-          <div className="mt-16 overflow-hidden rounded-[2rem] border border-white/10 bg-[#3e3f9e] text-primary-foreground shadow-[0_20px_60px_rgba(24,26,87,0.28)]">
-            <div className="grid lg:grid-cols-[1.05fr_1fr] gap-8 p-6 md:p-10 lg:p-14 items-center">
+          <div className="mt-12 md:mt-16 overflow-hidden rounded-[2rem] border border-white/10 bg-[#3e3f9e] text-primary-foreground shadow-[0_20px_60px_rgba(24,26,87,0.28)]">
+            <div className="grid lg:grid-cols-[1.05fr_1fr] gap-8 p-5 sm:p-6 md:p-10 lg:p-14 items-center">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary-foreground/90 mb-5">
                   Set up on a 30-acre lush-green campus
@@ -842,7 +850,7 @@ const PlacementCarousel = () => {
 
         {/* ── Faculty Spotlight ── */}
         <SectionFadeIn>
-          <div className="mt-16 overflow-hidden rounded-[2rem] border border-charcoal/10 bg-[radial-gradient(circle_at_16%_22%,rgba(226,34,43,0.26),transparent_34%),radial-gradient(circle_at_86%_14%,rgba(59,130,246,0.24),transparent_32%),linear-gradient(145deg,#0e172a,#182337_48%,#111827)] p-6 md:p-10 text-primary-foreground shadow-[0_26px_64px_rgba(2,8,23,0.34)]">
+          <div className="mt-12 md:mt-16 overflow-hidden rounded-[2rem] border border-charcoal/10 bg-[radial-gradient(circle_at_16%_22%,rgba(226,34,43,0.26),transparent_34%),radial-gradient(circle_at_86%_14%,rgba(59,130,246,0.24),transparent_32%),linear-gradient(145deg,#0e172a,#182337_48%,#111827)] p-5 sm:p-6 md:p-10 text-primary-foreground shadow-[0_26px_64px_rgba(2,8,23,0.34)]">
             <div className="mb-8 md:mb-10">
               <p className="text-primary-foreground/80 font-semibold text-xs uppercase tracking-[0.24em] mb-3">
                 Faculty Spotlight
@@ -988,7 +996,7 @@ const PlacementCarousel = () => {
 
         {/* ── Guest Events ── */}
         <SectionFadeIn>
-          <div className="mt-16 rounded-[2rem] border border-border/60 bg-background p-6 md:p-10 shadow-lg shadow-slate-900/5">
+          <div className="mt-12 md:mt-16 rounded-[2rem] border border-border/60 bg-background p-5 sm:p-6 md:p-10 shadow-lg shadow-slate-900/5">
             <div className="mb-8">
               <p className="text-primary font-semibold text-xs uppercase tracking-[0.24em] mb-3">
                 ASB Events
@@ -1044,7 +1052,7 @@ const PlacementCarousel = () => {
 
         {/* ── 100% Placement Assistance Banner ── */}
         <SectionFadeIn>
-          <div className="mt-16 relative overflow-hidden rounded-[2rem] border border-white/10 min-h-[320px] md:min-h-[380px]">
+          <div className="mt-12 md:mt-16 relative overflow-hidden rounded-[2rem] border border-white/10 min-h-[320px] md:min-h-[380px]">
             <img
               src={placementsImg}
               alt="Placement assistance at ASB"
@@ -1079,7 +1087,7 @@ const PlacementCarousel = () => {
 
         {/* ── Testimonials ── */}
         <SectionFadeIn>
-          <div className="mt-16 rounded-[2rem] border border-border/60 bg-background p-6 md:p-10 shadow-lg shadow-slate-900/5 overflow-hidden">
+          <div className="mt-12 md:mt-16 rounded-[2rem] border border-border/60 bg-background p-5 sm:p-6 md:p-10 shadow-lg shadow-slate-900/5 overflow-hidden">
             <div className="text-center mb-10">
               <p className="text-primary font-semibold text-xs uppercase tracking-[0.24em] mb-3">
                 Alumni Voices
@@ -1128,10 +1136,9 @@ const PlacementCarousel = () => {
                         <img
                           src={t.image}
                           alt={t.name}
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-contain"
                           style={{
                             objectPosition: t.imagePosition ?? "50% 30%",
-                            transform: `translateY(${t.imageOffsetY ?? 0}px)`,
                           }}
                           loading="lazy"
                         />

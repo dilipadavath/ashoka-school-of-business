@@ -197,27 +197,27 @@ const Navbar = () => {
   return (
     <>
       {/* TOP BAR */}
-      <div className="static bg-foreground py-2 text-background">
-        <div className="container-wide flex items-center justify-between px-4">
+      <div className="static h-[2rem] bg-foreground text-background">
+        <div className="container-wide flex h-full items-center justify-between px-4">
           <div className="hidden md:flex items-center gap-1">
             {topBarLinks.map((link) => (
               <Link
                 key={link.label}
                 to={link.path}
-                className="px-3 py-1 text-xs font-medium uppercase tracking-wider text-background/80 hover:text-background transition-colors"
+                className="px-2 text-[10px] font-medium uppercase tracking-wider text-background/80 hover:text-background transition-colors"
               >
                 {link.label}
               </Link>
             ))}
           </div>
-          <div className="ml-auto inline-flex items-center gap-2 rounded-full border border-background/20 bg-background/10 px-3 py-1.5">
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-background/85">
+          <div className="ml-auto inline-flex h-5 items-center gap-1.5 rounded-full border border-background/20 bg-background/10 px-2">
+            <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.14em] text-background/85">
               Approved by AICTE
             </span>
             <img
               src={badge}
               alt="Approved by AICTE"
-              className="h-7 w-auto rounded-full object-contain sm:h-8"
+              className="h-4 w-auto rounded-full object-contain sm:h-5"
             />
           </div>
         </div>
@@ -364,6 +364,8 @@ const Navbar = () => {
                   <a
                     key={item.label}
                     href={item.path}
+                    target="_blank"
+                    rel="noreferrer"
                     className="px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:text-primary"
                   >
                     {item.label}
@@ -512,6 +514,8 @@ const Navbar = () => {
                 <a
                   key={item.label}
                   href={item.path}
+                  target="_blank"
+                  rel="noreferrer"
                   className="block px-6 py-3 text-sm font-medium text-foreground hover:text-primary"
                 >
                   {item.label}
