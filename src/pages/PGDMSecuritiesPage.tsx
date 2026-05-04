@@ -193,13 +193,13 @@ const PGDMSecuritiesPage = () => {
                 </p>
 
                 <div className="mt-12 flex flex-wrap gap-3">
-                  <Link
+                  {/* <Link
                     to="/contact-us"
                     className="inline-flex items-center gap-2 rounded-lg border border-primary/30 bg-white/10 px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-white/15"
                   >
                     <Download className="h-4 w-4" />
                     Download brochure
-                  </Link>
+                  </Link> */}
                   <Link
                     to="/contact-us"
                     className="inline-flex items-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_24px_rgba(234,179,8,0.2)] transition-colors hover:bg-primary/90"

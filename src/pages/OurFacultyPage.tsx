@@ -391,12 +391,12 @@ const OurFacultyPage = () => {
                 delay={Math.min(index * 0.05, 0.36)}
               >
                 <article className="group text-left w-full overflow-hidden rounded-[1.6rem] border border-border/70 bg-gradient-to-br from-white to-secondary/40 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(15,23,42,0.16)]">
-                  <div className="grid md:grid-cols-[230px_1fr] lg:min-h-[380px]">
-                    <div className="order-1 md:order-1 bg-secondary/70 md:h-full">
+                  <div className="grid md:grid-cols-[230px_1fr]">
+                    <div className="order-1 md:order-1 bg-secondary/70 aspect-square">
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="h-[280px] md:h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
 
@@ -459,7 +459,7 @@ const OurFacultyPage = () => {
                           <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary font-bold">
                             Profile
                           </p>
-                          <div className="mt-1.5 space-y-2 max-h-[132px] overflow-auto pr-1">
+                          <div className="mt-1.5 space-y-2">
                             {member.bio.map((paragraph) => (
                               <p
                                 key={paragraph}

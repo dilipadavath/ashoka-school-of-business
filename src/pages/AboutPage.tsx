@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import heroAbout from "@/assets/About_banner.jpeg";
+import heroAbout from "@/assets/About_banner.jpg";
 import aboutImg1 from "@/assets/about img 1.webp";
 import aboutImg2 from "@/assets/about img2.webp";
 import founderChairmanImg from "@/assets/Founder and Chairman.webp";
@@ -166,7 +166,6 @@ const AboutPage = () => {
         className="section-padding pt-0 bg-background scroll-mt-28"
       >
         <div className="container-wide">
-          <HoverCardAnimation glowing>
             <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
               <div className="rounded-[1.75rem] bg-primary p-8 md:p-10 text-primary-foreground shadow-[0_16px_40px_rgba(226,34,43,0.18)]">
                 <div className="flex items-center gap-3 mb-4">
@@ -194,7 +193,6 @@ const AboutPage = () => {
                 </p>
               </div>
             </div>
-          </HoverCardAnimation>
         </div>
       </section>
 

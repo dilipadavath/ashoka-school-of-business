@@ -103,7 +103,7 @@ const Index = () => {
 
     const autoplay = window.setInterval(() => {
       whyChooseApi.scrollNext();
-    }, 4500);
+    }, 5500);
 
     return () => window.clearInterval(autoplay);
   }, [whyChooseApi]);
@@ -236,7 +236,7 @@ const Index = () => {
                           className="basis-full pl-0"
                         >
                           <article
-                            className={`w-full rounded-2xl sm:rounded-[2rem] ${slide.bgColor} flex min-h-[440px] flex-col p-4 sm:min-h-[500px] sm:p-5 md:min-h-[560px] md:p-6 shadow-[0_10px_28px_rgba(15,23,42,0.08)]`}
+                            className={`relative w-full rounded-2xl sm:rounded-[2rem] ${slide.bgColor} flex min-h-[440px] flex-col p-4 sm:min-h-[500px] sm:p-5 md:min-h-[560px] md:p-6 shadow-[0_10px_28px_rgba(15,23,42,0.08)]`}
                           >
                             <div className="mb-4 sm:mb-5 flex items-center justify-between gap-4">
                               <div className="inline-grid h-16 w-16 sm:h-20 sm:w-20 place-content-center rounded-full bg-white/15">
@@ -258,13 +258,19 @@ const Index = () => {
                                   Explore
                                 </Link>
                               ) : null}
-                              <div className="overflow-hidden rounded-xl sm:rounded-[1.25rem] border border-white/20 bg-white/10">
+                              <div className="relative overflow-hidden rounded-xl sm:rounded-[1.25rem] border border-white/20 bg-white/10">
                                 <img
                                   src={slide.image}
                                   alt={slide.title}
                                   className="h-36 w-full object-cover sm:h-44 md:h-52"
                                   loading="lazy"
                                 />
+                                {slide.title === "AI-Driven PGDM in Securities Market" ? (
+                                  <div className="absolute -top-3 -right-3 bg-primary text-primary-foreground px-4 py-3 rounded-xl shadow-lg">
+                                    <p className="text-2xl font-black leading-none">Rs. 50L</p>
+                                    <p className="text-xs font-semibold uppercase tracking-[0.08em]">Practice Fund</p>
+                                  </div>
+                                ) : null}
                               </div>
                             </div>
                           </article>
@@ -412,6 +418,7 @@ const Index = () => {
               className="text-lg"
               size="lg"
               glowing={true}
+              disableHover={true}
             >
               Start Your Journey
             </AnimatedButton>

@@ -7,7 +7,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import globalImmersion from "@/assets/placements.jpeg";
+import globalImmersion from "@/assets/globalImmersion.jpg";
 import campusLife from "@/assets/campus-life.jpg";
 import campusAerial from "@/assets/campus-aerial.jpg";
 import leadership from "@/assets/leadership.jpg";
@@ -16,7 +16,8 @@ import smartClassroom from "@/assets/Smart Classrooms.jpg";
 import sportsArena from "@/assets/campus-hub.png";
 import incubation from "@/assets/incubation.jpg";
 import pgdmSeminar from "@/assets/pgdm-seminar.jpg";
-import placementsImg from "@/assets/placements.jpg";
+import marketsecurity from "@/assets/marketsecurity.jpg";
+import placementassistance from "@/assets/placementassistance.jpg";
 import hymavathiImg from "@/assets/testimonials/hyamavathi.png";
 import lingesImg from "@/assets/testimonials/linges.png";
 import magisImg from "@/assets/testimonials/Magisetty.png";
@@ -129,7 +130,7 @@ const pgdmTiles = [
   {
     title: "Securities Market",
     path: "/qms",
-    image: pgdmSeminar,
+    image: marketsecurity,
     description:
       "Build capital markets expertise with practical exposure to securities, trading, and compliance.",
     points: ["Securities & Portfolio Basics", "Market Operations & Compliance"],
@@ -476,7 +477,7 @@ const PlacementCarousel = () => {
                 key={i}
                 className="snap-start shrink-0 w-[260px] md:w-[280px] group"
               >
-                <div className="rounded-[1.4rem] p-[2px] bg-gradient-to-b from-primary/50 to-primary/20 shadow-lg shadow-slate-900/10 transition-all duration-300 will-change-transform group-hover:-translate-y-1 group-hover:shadow-xl">
+                <div className="rounded-[1.4rem] p-[2px] bg-gradient-to-b from-primary/50 to-primary/20 transition-all duration-300 will-change-transform group-hover:-translate-y-1">
                   <div className="overflow-hidden rounded-[1.28rem] bg-background">
                     <img
                       src={photo}
@@ -1054,7 +1055,7 @@ const PlacementCarousel = () => {
         <SectionFadeIn>
           <div className="mt-12 md:mt-16 relative overflow-hidden rounded-[2rem] border border-white/10 min-h-[320px] md:min-h-[380px]">
             <img
-              src={placementsImg}
+              src={placementassistance}
               alt="Placement assistance at ASB"
               className="absolute inset-0 h-full w-full object-cover"
             />

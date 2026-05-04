@@ -35,16 +35,11 @@ const megaMenuItems = {
       {
         heading: "Institutional",
         links: [
-          { label: "AICTE Approval", path: "/about#aicte-approval" },
           {
             label: "Research and Consulting",
             path: "/research-and-consulting",
           },
           { label: "Infrastructure", path: "/infrastructure" },
-          {
-            label: "Mandatory Disclosure",
-            path: "/about#mandatory-disclosure",
-          },
         ],
       },
     ],
@@ -232,7 +227,7 @@ const Navbar = () => {
         >
           <div className="container-wide flex items-center justify-between px-4">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 shrink-0">
+            <Link to="/" className="flex items-center gap-0 shrink-0">
               <img
                 src={logo}
                 alt="Ashoka School of Business"
@@ -308,16 +303,6 @@ const Navbar = () => {
                             ),
                           )}
                         </div>
-                        {item.megaKey === "Explore ASB" ? (
-                          <div className="mt-4 pt-4 border-t border-border">
-                            <Link
-                              to="/about"
-                              className="text-sm font-semibold text-primary hover:underline"
-                            >
-                              View Full Explore ASB Page →
-                            </Link>
-                          </div>
-                        ) : null}
                       </div>
                     )}
                   </div>
@@ -462,14 +447,6 @@ const Navbar = () => {
                           ))}
                         </div>
                       ))}
-                      {item.megaKey === "Explore ASB" ? (
-                        <Link
-                          to="/about"
-                          className="block px-4 py-2 text-sm font-semibold text-primary"
-                        >
-                          View Full Explore ASB Page →
-                        </Link>
-                      ) : null}
                     </div>
                   )}
                 </div>

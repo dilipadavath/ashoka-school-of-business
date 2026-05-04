@@ -2,7 +2,12 @@ import SectionFadeIn from "@/components/SectionFadeIn";
 import TextReveal from "@/components/TextReveal";
 import HoverCardAnimation from "@/components/HoverCardAnimation";
 import { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Calendar as CalendarIcon, Clock } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import infrastructureVideo from "@/asb-event-Made-with-Clipchamp.compressed.mp4";
 
 const galleryModules = import.meta.glob(
@@ -21,6 +26,33 @@ const galleryImages = Object.entries(galleryModules)
 
 const InfrastructurePage = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    bookingDate: Yup.string().required("Date is required"),
+    time: Yup.string().required("Time is required"),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      bookingDate: "",
+      time: "",
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      console.log("Form submitted:", values);
+      // Handle form submission here
+      setShowSuccess(true);
+      formik.resetForm();
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+    },
+  });
 
   const showPreviousImage = () => {
     if (selectedIndex === null) return;
@@ -36,6 +68,7 @@ const InfrastructurePage = () => {
 
   return (
     <div className="pt-0 md:pt-20 bg-background overflow-x-clip">
+
       <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground section-padding">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-28 -left-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
@@ -68,50 +101,6 @@ const InfrastructurePage = () => {
               Experience the energy of learning, growth, and ambition at Ashoka
               School of Business, Hyderabad
             </p>
-
-            <form
-              name="campus-visit"
-              onSubmit={(event) => event.preventDefault()}
-              className="mt-8 grid gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur sm:grid-cols-[1.3fr_1fr_1fr_auto]"
-            >
-              <label className="sr-only" htmlFor="campus-visit-name">
-                Name
-              </label>
-              <input
-                id="campus-visit-name"
-                name="campus-visit"
-                type="text"
-                placeholder="Name"
-                className="h-11 w-full rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60"
-              />
-
-              <label className="sr-only" htmlFor="campus-visit-date">
-                Booking date
-              </label>
-              <input
-                id="campus-visit-date"
-                name="booking-date"
-                type="date"
-                className="h-11 w-full rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60"
-              />
-
-              <label className="sr-only" htmlFor="campus-visit-time">
-                Time
-              </label>
-              <input
-                id="campus-visit-time"
-                name="time"
-                type="time"
-                className="h-11 w-full rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60"
-              />
-
-              <button
-                type="submit"
-                className="h-11 w-full rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
-              >
-                Book Visit
-              </button>
-            </form>
           </SectionFadeIn>
 
           <SectionFadeIn delay={0.12}>
@@ -129,6 +118,135 @@ const InfrastructurePage = () => {
               </div>
             </div>
           </SectionFadeIn>
+        </div>
+
+
+      </section>
+
+
+      <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-28 -left-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
+          <div className="absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-primary/15 blur-3xl" />
+          <div className="absolute inset-y-0 left-1/2 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent" />
+        </div>
+
+        <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="max-w-7xl mx-auto flex gap-3 flex-col sm:flex-row items-stretch sm:items-center rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur"
+          >
+            <label className="sr-only" htmlFor="campus-visit-name">
+              Name
+            </label>
+            <input
+              id="campus-visit-name"
+              name="name"
+              type="text"
+              placeholder="Name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="flex-1 h-11 rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal placeholder:text-charcoal/35 shadow-sm outline-none transition focus:border-primary/60 font-body"
+            />
+
+            <label className="sr-only" htmlFor="campus-visit-date">
+              Booking date
+            </label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <button
+                  type="button"
+                  className="flex-1 h-11 rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60 font-body flex items-center justify-between"
+                >
+                  <span>{formik.values.bookingDate || "Select date"}</span>
+                  <CalendarIcon className="h-4 w-4 text-charcoal" />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={formik.values.bookingDate ? new Date(formik.values.bookingDate) : undefined}
+                  onSelect={(date) => {
+                    if (date) {
+                      const dateString = date.toISOString().split('T')[0];
+                      formik.setFieldValue('bookingDate', dateString);
+                    }
+                  }}
+                  disabled={(date) => date < new Date()}
+                  initialFocus
+                />
+              </PopoverContent>
+            </Popover>
+
+            <label className="sr-only" htmlFor="campus-visit-time">
+              Time
+            </label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <button
+                  type="button"
+                  className="flex-1 h-11 rounded-xl border border-white/15 bg-white/95 px-4 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/60 font-body flex items-center justify-between"
+                >
+                  <span>{formik.values.time || "Select time"}</span>
+                  <Clock className="h-4 w-4 text-charcoal" />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-3" align="start">
+                <div className="space-y-2">
+                  <input
+                    type="time"
+                    value={formik.values.time}
+                    onChange={formik.handleChange}
+                    name="time"
+                    className="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm font-body"
+                  />
+                  <div className="grid grid-cols-4 gap-2 max-h-48 overflow-y-auto">
+                    {Array.from({ length: 24 }, (_, h) => {
+                      return Array.from({ length: 4 }, (_, m) => {
+                        const hour = String(h).padStart(2, '0');
+                        const minute = String(m * 15).padStart(2, '0');
+                        const timeValue = `${hour}:${minute}`;
+                        return (
+                          <button
+                            key={timeValue}
+                            type="button"
+                            onClick={() => formik.setFieldValue('time', timeValue)}
+                            className={`text-xs px-2 py-1 rounded ${
+                              formik.values.time === timeValue
+                                ? 'bg-primary text-primary-foreground'
+                                : 'bg-gray-200 hover:bg-gray-300'
+                            }`}
+                          >
+                            {timeValue}
+                          </button>
+                        );
+                      });
+                    }).flat()}
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+
+            <button
+              type="submit"
+              className="h-11 sm:w-auto sm:px-8 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition whitespace-nowrap font-body"
+            >
+              Book Visit
+            </button>
+          </form>
+
+          {showSuccess && (
+            <div className="max-w-7xl mx-auto mt-4 p-4 rounded-xl bg-green-500/20 border border-green-500/50 text-green-700 animate-in fade-in slide-in-from-top-2 duration-500">
+              <div className="flex items-center gap-3">
+                <span className="text-xl">✓</span>
+                <div>
+                  <p className="font-semibold">Campus visit booked successfully!</p>
+                  <p className="text-sm text-green-600">We'll confirm your visit shortly.</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

@@ -11,6 +11,7 @@ interface AnimatedButtonProps {
   variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   glowing?: boolean;
+  disableHover?: boolean;
 }
 
 const baseStyles = {
@@ -35,8 +36,9 @@ const AnimatedButton = ({
   variant = "primary",
   size = "md",
   glowing = false,
+  disableHover = false,
 }: AnimatedButtonProps) => {
-  const buttonVariants = {
+  const buttonVariants = disableHover ? {} : {
     whileHover: {
       scale: 1.05,
       boxShadow: glowing
@@ -57,8 +59,8 @@ const AnimatedButton = ({
           rel="noopener noreferrer"
           className={baseClasses}
           variants={buttonVariants}
-          whileHover="whileHover"
-          whileTap="whileTap"
+          whileHover={disableHover ? undefined : "whileHover"}
+          whileTap={disableHover ? undefined : "whileTap"}
         >
           {children}
         </motion.a>
@@ -66,7 +68,7 @@ const AnimatedButton = ({
     }
 
     return (
-      <motion.div variants={buttonVariants} whileHover="whileHover" whileTap="whileTap">
+      <motion.div variants={buttonVariants} whileHover={disableHover ? undefined : "whileHover"} whileTap={disableHover ? undefined : "whileTap"}>
         <Link to={href} className={baseClasses}>
           {children}
         </Link>
@@ -79,8 +81,8 @@ const AnimatedButton = ({
       onClick={onClick}
       className={baseClasses}
       variants={buttonVariants}
-      whileHover="whileHover"
-      whileTap="whileTap"
+      whileHover={disableHover ? undefined : "whileHover"}
+      whileTap={disableHover ? undefined : "whileTap"}
     >
       {children}
     </motion.button>

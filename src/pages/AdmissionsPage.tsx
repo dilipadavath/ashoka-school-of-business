@@ -110,13 +110,13 @@ const AdmissionsPage = () => {
                   REGISTRATION FORM
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <a
+                {/* <a
                   href="#"
                   className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/35 px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
                 >
                   DOWNLOAD BROCHURE
                   <Download className="h-4 w-4" />
-                </a>
+                </a> */}
               </div>
             </div>
           </SectionFadeIn>

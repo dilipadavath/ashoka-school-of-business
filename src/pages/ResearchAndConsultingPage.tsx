@@ -1,5 +1,5 @@
 import SectionFadeIn from "@/components/SectionFadeIn";
-import researchConsultingImg from "@/assets/Research and Consulting.webp";
+import researchConsultingImg1 from "@/assets/researchConsultingImg1.jpg";
 
 const focusedFunctions = [
   "Publishing an Annual Journal",
@@ -48,7 +48,7 @@ const ResearchAndConsultingPage = () => {
             <div className="relative rounded-[1.4rem] border border-primary/30 bg-white/95 p-3 shadow-[0_20px_70px_rgba(2,8,23,0.35)]">
               <div className="overflow-hidden rounded-[1rem] border border-border bg-secondary">
                 <img
-                  src={researchConsultingImg}
+                  src={researchConsultingImg1}
                   alt="Research and Consulting at ASB"
                   className="h-full w-full object-cover"
                 />
