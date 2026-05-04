@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
 import ScrollToTop from "@/components/ScrollToTop";
+import CursorDot from "@/components/CursorDot";
 import Index from "./pages/Index";
 import BBAPage from "./pages/BBAPage";
 import PGDMPage from "./pages/PGDMPage";
@@ -65,9 +66,11 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <CursorDot />
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Index />} />
+        <div className="[&>div]:!pt-0 [&>main]:!pt-0">
+          <Routes>
+            <Route path="/" element={<Index />} />
           <Route path="/bba" element={<BBAPage />} />
           <Route path="/pgdm" element={<PGDMPage />} />
           <Route path="/qms" element={<PGDMSecuritiesPage />} />
@@ -122,9 +125,10 @@ const App = () => (
           <Route path="/faculty-openings" element={<FacultyOpeningsPage />} />
           <Route path="/register-now" element={<RegisterNowPage />} />
           <Route path="/enquiry-now" element={<EnquiryNowPage />} />
-          <Route path="/application-form" element={<ApplicationFormPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route path="/application-form" element={<ApplicationFormPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
         <Footer />
         <FloatingButtons />
       </BrowserRouter>

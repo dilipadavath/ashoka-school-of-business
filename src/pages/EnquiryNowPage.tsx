@@ -44,7 +44,8 @@ const validateForm = (values: EnquiryFormData): EnquiryFormErrors => {
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
     errors.email = "Enter a valid email address.";
   }
-  if (!values.specialisation) errors.specialisation = "Please select a specialisation.";
+  if (!values.specialisation)
+    errors.specialisation = "Please select a specialisation.";
   if (!values.agree) errors.agree = "You must agree to continue.";
 
   return errors;
@@ -72,7 +73,10 @@ const EnquiryNowPage = () => {
   const handleChange =
     (field: keyof EnquiryFormData) =>
     (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-      const value = e.target.type === "checkbox" ? (e.target as HTMLInputElement).checked : e.target.value;
+      const value =
+        e.target.type === "checkbox"
+          ? (e.target as HTMLInputElement).checked
+          : e.target.value;
       setFormData((prev) => ({ ...prev, [field]: value }));
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     };
@@ -103,7 +107,7 @@ const EnquiryNowPage = () => {
   };
 
   return (
-    <main className="pt-20 min-h-screen bg-[linear-gradient(135deg,#f8fafc_0%,#fff1f2_50%,#f8fafc_100%)]">
+    <main className="pt-0 md:pt-20 min-h-screen bg-[linear-gradient(135deg,#f8fafc_0%,#fff1f2_50%,#f8fafc_100%)]">
       <div className="flex items-center justify-center px-4 py-12 md:py-20">
         <SectionFadeIn className="w-full max-w-[800px]">
           <div className="w-full">
@@ -125,16 +129,28 @@ const EnquiryNowPage = () => {
               <div className="relative z-10">
                 <div className="mx-auto mb-6 grid max-w-[440px] grid-cols-1 gap-2 text-left sm:grid-cols-2">
                   <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-sm">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/60">Admissions</p>
-                    <p className="mt-1 text-sm font-bold text-white">Open for 2026</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/60">
+                      Admissions
+                    </p>
+                    <p className="mt-1 text-sm font-bold text-white">
+                      Open for 2026
+                    </p>
                   </div>
                   <div className="rounded-2xl border border-amber-300/25 bg-amber-300/12 px-4 py-3 backdrop-blur-sm">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-amber-100/70">Availability</p>
-                    <p className="mt-1 text-sm font-bold text-amber-100">Few Slots Left</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-amber-100/70">
+                      Availability
+                    </p>
+                    <p className="mt-1 text-sm font-bold text-amber-100">
+                      Few Slots Left
+                    </p>
                   </div>
                 </div>
-                <h1 className="text-2xl md:text-3xl font-black tracking-tight">Enquire Now</h1>
-                <p className="mt-2 text-sm text-white/75">Applications Open For 2026 – 2028 · PGDM</p>
+                <h1 className="text-2xl md:text-3xl font-black tracking-tight">
+                  Enquire Now
+                </h1>
+                <p className="mt-2 text-sm text-white/75">
+                  Applications Open For 2026 – 2028 · PGDM
+                </p>
               </div>
             </div>
 
@@ -142,7 +158,8 @@ const EnquiryNowPage = () => {
             <div className="rounded-b-3xl border border-t-0 border-border/70 bg-white p-6 md:p-8 shadow-xl shadow-slate-900/5">
               {isSubmitted && (
                 <div className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-                  Enquiry submitted successfully! Our admissions team will contact you shortly.
+                  Enquiry submitted successfully! Our admissions team will
+                  contact you shortly.
                 </div>
               )}
 
@@ -158,15 +175,21 @@ const EnquiryNowPage = () => {
                     className={inputClasses("fullName")}
                   />
                   {errors.fullName && (
-                    <p className="mt-1.5 text-xs font-medium text-red-500">{errors.fullName}</p>
+                    <p className="mt-1.5 text-xs font-medium text-red-500">
+                      {errors.fullName}
+                    </p>
                   )}
                 </div>
 
                 {/* Mobile Number with +91 prefix */}
                 <div>
-                  <div className={`flex items-center rounded-xl border bg-white transition-colors ${
-                    errors.mobile ? "border-red-400" : "border-border hover:border-slate-300"
-                  }`}>
+                  <div
+                    className={`flex items-center rounded-xl border bg-white transition-colors ${
+                      errors.mobile
+                        ? "border-red-400"
+                        : "border-border hover:border-slate-300"
+                    }`}
+                  >
                     <span className="flex items-center gap-1.5 border-r border-border pl-4 pr-3 py-3.5 text-base font-medium text-foreground select-none whitespace-nowrap">
                       🇮🇳 +91
                     </span>
@@ -181,7 +204,9 @@ const EnquiryNowPage = () => {
                     />
                   </div>
                   {errors.mobile && (
-                    <p className="mt-1.5 text-xs font-medium text-red-500">{errors.mobile}</p>
+                    <p className="mt-1.5 text-xs font-medium text-red-500">
+                      {errors.mobile}
+                    </p>
                   )}
                 </div>
 
@@ -196,7 +221,9 @@ const EnquiryNowPage = () => {
                     className={inputClasses("email")}
                   />
                   {errors.email && (
-                    <p className="mt-1.5 text-xs font-medium text-red-500">{errors.email}</p>
+                    <p className="mt-1.5 text-xs font-medium text-red-500">
+                      {errors.email}
+                    </p>
                   )}
                 </div>
 
@@ -218,10 +245,20 @@ const EnquiryNowPage = () => {
                     ))}
                   </select>
                   <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M3 4.5L6 7.5L9 4.5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </div>
                   {errors.specialisation && (
-                    <p className="mt-1.5 text-xs font-medium text-red-500">{errors.specialisation}</p>
+                    <p className="mt-1.5 text-xs font-medium text-red-500">
+                      {errors.specialisation}
+                    </p>
                   )}
                 </div>
 
@@ -235,11 +272,14 @@ const EnquiryNowPage = () => {
                       className="mt-1 h-4 w-4 shrink-0 rounded border-border accent-red-600 cursor-pointer"
                     />
                     <span className="text-sm text-muted-foreground leading-snug">
-                      I agree to receive information regarding my submitted applications by signing up on Ashoka Business school*
+                      I agree to receive information regarding my submitted
+                      applications by signing up on Ashoka Business school*
                     </span>
                   </label>
                   {errors.agree && (
-                    <p className="mt-1.5 text-xs font-medium text-red-500">{errors.agree}</p>
+                    <p className="mt-1.5 text-xs font-medium text-red-500">
+                      {errors.agree}
+                    </p>
                   )}
                 </div>
 

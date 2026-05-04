@@ -12,7 +12,9 @@ const gipImageModules = import.meta.glob("../assets/**/*.{png,jpg,jpeg,webp}", {
 const getImagesFromFolder = (folderName: string) =>
   Object.entries(gipImageModules)
     .filter(([filePath]) => filePath.includes(`/assets/${folderName}/`))
-    .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }))
+    .sort(([a], [b]) =>
+      a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }),
+    )
     .map(([, src]) => src);
 
 // Day sections with activities structure
@@ -71,14 +73,22 @@ const gipItinerary = [
     dayTitle: "DAY 3 - DEWA - Sustainabiity Workshop",
     activities: [
       {
-        label: "SUSTAINABILITY WORKSHOP BY MATTEO BOFFA PRESIDENT SWISS BUSINESS COUNCIL",
-        folderPath: "Sustainability Workshop by Matteo Boffa President Swiss Business Council",
-        images: getImagesFromFolder("Sustainability Workshop by Matteo Boffa President Swiss Business Council"),
+        label:
+          "SUSTAINABILITY WORKSHOP BY MATTEO BOFFA PRESIDENT SWISS BUSINESS COUNCIL",
+        folderPath:
+          "Sustainability Workshop by Matteo Boffa President Swiss Business Council",
+        images: getImagesFromFolder(
+          "Sustainability Workshop by Matteo Boffa President Swiss Business Council",
+        ),
       },
       {
-        label: "DEWA SOLAR INNOVATION CENTRE VISIT - THE WORLD'S LARGEST SOLAR PARK",
-        folderPath: "DEWA Solar Innovation Centre Visit - The world's largest solar park",
-        images: getImagesFromFolder("DEWA Solar Innovation Centre Visit - The world's largest solar park"),
+        label:
+          "DEWA SOLAR INNOVATION CENTRE VISIT - THE WORLD'S LARGEST SOLAR PARK",
+        folderPath:
+          "DEWA Solar Innovation Centre Visit - The world's largest solar park",
+        images: getImagesFromFolder(
+          "DEWA Solar Innovation Centre Visit - The world's largest solar park",
+        ),
       },
     ],
   },
@@ -159,7 +169,9 @@ const GIPPage = () => {
 
   const showPreviousImage = () => {
     if (selectedIndex === null || previewImages.length === 0) return;
-    setSelectedIndex((selectedIndex - 1 + previewImages.length) % previewImages.length);
+    setSelectedIndex(
+      (selectedIndex - 1 + previewImages.length) % previewImages.length,
+    );
   };
 
   const showNextImage = () => {
@@ -168,18 +180,22 @@ const GIPPage = () => {
   };
 
   return (
-    <main className="pt-20 bg-background">
-      <section className="relative overflow-hidden border-b border-border bg-[radial-gradient(circle_at_20%_20%,rgba(220,38,38,0.22),transparent_46%),radial-gradient(circle_at_80%_0%,rgba(2,132,199,0.24),transparent_38%),linear-gradient(145deg,#0f172a,#1e293b)] text-primary-foreground px-4 md:px-8 py-16 md:py-24">
-        <div className="container-wide relative z-10 px-4">
+    <main className="pt-0 md:pt-20 bg-background">
+      <section className="relative overflow-hidden border-b border-border bg-[radial-gradient(circle_at_20%_20%,rgba(220,38,38,0.22),transparent_46%),radial-gradient(circle_at_80%_0%,rgba(2,132,199,0.24),transparent_38%),linear-gradient(145deg,#0f172a,#1e293b)] text-primary-foreground section-padding">
+        <div className="container-wide relative z-10">
           <SectionFadeIn>
             <div className="max-w-4xl">
               <p className="inline-flex rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.24em]">
                 Why ASB
               </p>
-              <h1 className="mt-5 text-3xl md:text-5xl font-black leading-tight">Global Immersion Program</h1>
+              <h1 className="mt-5 text-3xl md:text-5xl font-black leading-tight">
+                Global Immersion Program
+              </h1>
               <p className="mt-5 max-w-3xl text-sm md:text-base leading-relaxed text-primary-foreground/90">
-                Experience international exposure through immersive academic and cultural learning opportunities in Dubai.
-                Explore business innovations, sustainability practices, and global industry leadership.
+                Experience international exposure through immersive academic and
+                cultural learning opportunities in Dubai. Explore business
+                innovations, sustainability practices, and global industry
+                leadership.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
@@ -209,7 +225,9 @@ const GIPPage = () => {
               <div className="mb-16">
                 {/* Day Header - Bold Red Bar */}
                 <div className="bg-primary text-primary-foreground px-6 py-4 rounded-t-lg">
-                  <h2 className="text-2xl md:text-3xl font-black tracking-wide text-center">{day.dayTitle}</h2>
+                  <h2 className="text-2xl md:text-3xl font-black tracking-wide text-center">
+                    {day.dayTitle}
+                  </h2>
                 </div>
 
                 {/* Activity Tabs */}
@@ -218,7 +236,9 @@ const GIPPage = () => {
                     {day.activities.map((activity, activityIndex) => (
                       <button
                         key={activityIndex}
-                        onClick={() => handleActivityChange(dayIndex, activityIndex)}
+                        onClick={() =>
+                          handleActivityChange(dayIndex, activityIndex)
+                        }
                         className={`px-5 py-3 text-sm font-black uppercase tracking-[0.15em] transition-all rounded-lg whitespace-nowrap ${
                           activeActivities[dayIndex] === activityIndex
                             ? "bg-primary text-primary-foreground shadow-[0_4px_12px_rgba(220,38,38,0.25)]"
@@ -232,25 +252,33 @@ const GIPPage = () => {
 
                   {/* Gallery Grid - Placeholder */}
                   <div className="grid md:grid-cols-3 gap-4">
-                    {day.activities[activeActivities[dayIndex]].images.map((img, imgIndex) => (
-                      <div
-                        key={img}
-                        className="aspect-video overflow-hidden rounded-lg"
-                      >
-                        <button
-                          type="button"
-                          onClick={() => openPreview(day.activities[activeActivities[dayIndex]].images, imgIndex)}
-                          className="group block h-full w-full overflow-hidden rounded-lg"
-                          aria-label={`Open GIP gallery image ${imgIndex + 1}`}
+                    {day.activities[activeActivities[dayIndex]].images.map(
+                      (img, imgIndex) => (
+                        <div
+                          key={img}
+                          className="aspect-video overflow-hidden rounded-lg"
                         >
-                          <img
-                            src={img}
-                            alt={`${day.activities[activeActivities[dayIndex]].label} - Image ${imgIndex + 1}`}
-                            className="h-full w-full rounded-lg object-cover"
-                          />
-                        </button>
-                      </div>
-                    ))}
+                          <button
+                            type="button"
+                            onClick={() =>
+                              openPreview(
+                                day.activities[activeActivities[dayIndex]]
+                                  .images,
+                                imgIndex,
+                              )
+                            }
+                            className="group block h-full w-full overflow-hidden rounded-lg"
+                            aria-label={`Open GIP gallery image ${imgIndex + 1}`}
+                          >
+                            <img
+                              src={img}
+                              alt={`${day.activities[activeActivities[dayIndex]].label} - Image ${imgIndex + 1}`}
+                              className="h-full w-full rounded-lg object-cover"
+                            />
+                          </button>
+                        </div>
+                      ),
+                    )}
                   </div>
                 </div>
               </div>
@@ -259,8 +287,14 @@ const GIPPage = () => {
         </div>
       </section>
 
-      <Dialog open={selectedIndex !== null} onOpenChange={(open) => !open && setSelectedIndex(null)}>
-        <DialogContent showCloseButton={false} className="max-w-[min(94vw,1400px)] border-none bg-transparent p-0 shadow-none">
+      <Dialog
+        open={selectedIndex !== null}
+        onOpenChange={(open) => !open && setSelectedIndex(null)}
+      >
+        <DialogContent
+          showCloseButton={false}
+          className="max-w-[min(94vw,1400px)] border-none bg-transparent p-0 shadow-none"
+        >
           <DialogTitle className="sr-only">GIP Gallery Image</DialogTitle>
           {selectedIndex !== null && previewImages.length > 0 && (
             <div className="relative">
@@ -305,10 +339,13 @@ const GIPPage = () => {
       <section className="section-padding bg-secondary">
         <div className="container-wide text-center">
           <SectionFadeIn>
-            <h3 className="text-2xl font-bold text-foreground mb-4">Ready for Global Exposure?</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              Ready for Global Exposure?
+            </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              The Global Immersion Program is a core part of our PGDM curriculum, offering students hands-on international
-              business experience and cultural immersion.
+              The Global Immersion Program is a core part of our PGDM
+              curriculum, offering students hands-on international business
+              experience and cultural immersion.
             </p>
             <a
               href="/contact-us"

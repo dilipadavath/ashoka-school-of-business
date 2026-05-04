@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import SectionFadeIn from "@/components/SectionFadeIn";
-import aboutVideoOne from "@/Chanakya.mp4";
+import aboutVideoOne from "@/asb-event-Made-with-Clipchamp.compressed.mp4";
 import campusImg from "@/assets/campus-life.jpg";
 import campusHub from "@/assets/campus-hub.png";
 import globalImmersionImg from "@/assets/global-immersion.jpg";
@@ -95,21 +95,25 @@ const whyAsbItems = [
 
 const WhyASBPage = () => {
   return (
-    <div className="pt-20 bg-background overflow-x-clip">
-      <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground px-4 md:px-8 py-14 md:py-20">
+    <div className="pt-0 md:pt-20 bg-background overflow-x-clip">
+      <section className="relative isolate overflow-hidden bg-charcoal text-primary-foreground section-padding">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-28 -left-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
           <div className="absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-primary/15 blur-3xl" />
         </div>
-        <div className="container-wide relative z-10 px-4 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+        <div className="container-wide relative z-10 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
           <SectionFadeIn>
-            <p className="text-primary font-semibold text-sm uppercase tracking-[0.28em] mb-4">Why ASB</p>
+            <p className="inline-flex rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.24em]">
+              Why ASB
+            </p>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95] text-primary-foreground">
               Why Students Choose ASB
             </h1>
             <p className="mt-6 max-w-2xl text-primary-foreground/75 text-base md:text-lg leading-relaxed">
-              ASB combines global exposure, executive insight, skill development, simulations, and vibrant campus life
-              to create a business education experience that is practical, ambitious, and future-focused.
+              ASB combines global exposure, executive insight, skill
+              development, simulations, and vibrant campus life to create a
+              business education experience that is practical, ambitious, and
+              future-focused.
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {whyAsbItems.slice(0, 4).map((item) => (
@@ -137,16 +141,20 @@ const WhyASBPage = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
               <div className="absolute left-5 right-5 bottom-5 rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
-                <p className="text-xs uppercase tracking-[0.18em] text-primary">Distinctive Learning Design</p>
-                <p className="mt-2 text-xl font-black text-primary-foreground">Exposure, execution, and experience in one learning journey.</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-primary">
+                  Distinctive Learning Design
+                </p>
+                <p className="mt-2 text-xl font-black text-primary-foreground">
+                  Exposure, execution, and experience in one learning journey.
+                </p>
               </div>
             </div>
           </SectionFadeIn>
         </div>
       </section>
 
-      <section className="px-4 md:px-8 py-14 md:py-16 bg-gradient-to-b from-white to-secondary/35">
-        <div className="container-wide px-4">
+      <section className="section-padding bg-gradient-to-b from-white to-secondary/35">
+        <div className="container-wide">
           <SectionFadeIn>
             <div className="grid gap-4 md:grid-cols-4">
               {whyAsbItems.map((item, index) => (
@@ -155,9 +163,15 @@ const WhyASBPage = () => {
                   to={routeMap[item.id] || `#${item.id}`}
                   className="group rounded-2xl border border-border bg-white p-4 shadow-[0_4px_20px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_38px_rgba(15,23,42,0.14)]"
                 >
-                  <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-primary">0{index + 1}</p>
-                  <h2 className="mt-3 text-lg font-black text-foreground">{item.title}</h2>
-                  <p className="mt-1 text-sm text-muted-foreground">{item.fullTitle}</p>
+                  <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-primary">
+                    0{index + 1}
+                  </p>
+                  <h2 className="mt-3 text-lg font-black text-foreground">
+                    {item.title}
+                  </h2>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {item.fullTitle}
+                  </p>
                 </Link>
               ))}
             </div>
@@ -165,8 +179,8 @@ const WhyASBPage = () => {
         </div>
       </section>
 
-      <section className="px-4 md:px-8 pb-20">
-        <div className="container-wide px-4 space-y-8 md:space-y-10">
+      <section className="section-padding">
+        <div className="container-wide space-y-8 md:space-y-10">
           {whyAsbItems.map((item, index) => (
             <SectionFadeIn key={item.id} delay={Math.min(index * 0.04, 0.24)}>
               <section
@@ -174,17 +188,31 @@ const WhyASBPage = () => {
                 className="grid overflow-hidden rounded-[1.6rem] border border-border/80 bg-white shadow-[0_10px_40px_rgba(15,23,42,0.08)] lg:grid-cols-[320px_1fr]"
               >
                 <div className="relative min-h-[220px] bg-secondary">
-                  <img src={item.image} alt={item.fullTitle} className="h-full w-full object-cover" />
+                  <img
+                    src={item.image}
+                    alt={item.fullTitle}
+                    className="h-full w-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 to-transparent" />
                   <div className="absolute left-5 bottom-5">
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">{item.accent}</p>
-                    <p className="mt-2 text-2xl font-black text-white">{item.title}</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                      {item.accent}
+                    </p>
+                    <p className="mt-2 text-2xl font-black text-white">
+                      {item.title}
+                    </p>
                   </div>
                 </div>
                 <div className="p-6 md:p-8 lg:p-10">
-                  <p className="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-primary">Why ASB</p>
-                  <h3 className="mt-3 text-2xl md:text-3xl font-black text-foreground">{item.fullTitle}</h3>
-                  <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">{item.description}</p>
+                  <p className="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-primary">
+                    Why ASB
+                  </p>
+                  <h3 className="mt-3 text-2xl md:text-3xl font-black text-foreground">
+                    {item.fullTitle}
+                  </h3>
+                  <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
                 </div>
               </section>
             </SectionFadeIn>
