@@ -151,7 +151,7 @@ const Index = () => {
                 Explore Programs
               </AnimatedButton>
               <AnimatedButton
-                href="/contact-us"
+                href="/apply"
                 variant="outline"
                 className="text-lg border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
                 size="lg"

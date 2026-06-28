@@ -201,7 +201,7 @@ const PGDMSecuritiesPage = () => {
                     Download brochure
                   </Link> */}
                   <Link
-                    to="/contact-us"
+                    to="/apply"
                     className="inline-flex items-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_24px_rgba(234,179,8,0.2)] transition-colors hover:bg-primary/90"
                   >
                     Apply Now for PGDM QF

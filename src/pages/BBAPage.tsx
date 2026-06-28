@@ -593,7 +593,7 @@ const BBAPage = () => {
               Ready to Begin Your Journey?
             </h2>
             <Link
-              to="/contact-us"
+              to="/apply"
               className="inline-block px-8 py-4 bg-primary-foreground text-primary font-bold rounded-lg hover:bg-primary-foreground/90 transition-colors"
             >
               Apply Now

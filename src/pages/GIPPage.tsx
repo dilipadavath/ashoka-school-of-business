@@ -347,12 +347,12 @@ const GIPPage = () => {
               curriculum, offering students hands-on international business
               experience and cultural immersion.
             </p>
-            <a
-              href="/contact-us"
+            <Link
+              to="/apply"
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
             >
               Learn More & Apply
-            </a>
+            </Link>
           </SectionFadeIn>
         </div>
       </section>

@@ -244,7 +244,7 @@ const BlogPage = () => {
                     Explore Program
                   </Link>
                   <Link
-                    to="/contact-us"
+                    to="/apply"
                     className="px-6 py-3 border border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-colors"
                   >
                     Apply Now

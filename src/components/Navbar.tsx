@@ -138,7 +138,7 @@ const mainNavItems: NavItem[] = [
     label: "Programs",
     children: programsChildren,
   },
-  { label: "BBA-ACMB", path: "https://sample.bbaahoska.wimira.com/" },
+  { label: "BBA-ACMB", path: "https://acbm.org.in/" },
   { label: "Placements", path: "/best-placements-mba-colleges-in-hyderabad" },
   { label: "Admissions", path: "/admissions-for-mba-in-hyderabad" },
   { label: "Grievance", megaMenu: true, megaKey: "Grievance" },

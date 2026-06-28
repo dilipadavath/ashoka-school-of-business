@@ -55,7 +55,7 @@ import FacultyOpeningsPage from "./pages/FacultyOpeningsPage";
 import RegisterNowPage from "./pages/RegisterNowPage";
 import EnquiryNowPage from "./pages/EnquiryNowPage";
 import NotFound from "./pages/NotFound";
-import ApplicationFormPage from "./pages/ApplicationFormPage";
+import ApplyPage from "./pages/ApplyPage";
 
 const queryClient = new QueryClient();
 
@@ -125,7 +125,8 @@ const App = () => (
           <Route path="/faculty-openings" element={<FacultyOpeningsPage />} />
           <Route path="/register-now" element={<RegisterNowPage />} />
           <Route path="/enquiry-now" element={<EnquiryNowPage />} />
-            <Route path="/application-form" element={<ApplicationFormPage />} />
+            <Route path="/apply" element={<ApplyPage />} />
+            <Route path="/application-form" element={<ApplyPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
