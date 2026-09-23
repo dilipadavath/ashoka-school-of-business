@@ -1,7 +1,5 @@
-import { ChangeEvent, FormEvent, useState } from "react";
 import SectionFadeIn from "@/components/SectionFadeIn";
 import TextReveal from "@/components/TextReveal";
-import HoverCardAnimation from "@/components/HoverCardAnimation";
 import {
   Facebook,
   Instagram,
@@ -12,85 +10,7 @@ import {
 } from "lucide-react";
 import contactHero from "@/assets/contact-hero.jpg";
 
-type ContactFormData = {
-  name: string;
-  phone: string;
-  email: string;
-  subject: string;
-  message: string;
-};
-
-type ContactFormErrors = Partial<Record<keyof ContactFormData, string>>;
-
-const initialFormData: ContactFormData = {
-  name: "",
-  phone: "",
-  email: "",
-  subject: "",
-  message: "",
-};
-
-const validateForm = (values: ContactFormData): ContactFormErrors => {
-  const nextErrors: ContactFormErrors = {};
-
-  if (!values.name.trim()) nextErrors.name = "Name is required.";
-  if (!values.phone.trim()) {
-    nextErrors.phone = "Phone is required.";
-  } else if (values.phone.replace(/\D/g, "").length < 10) {
-    nextErrors.phone = "Enter a valid phone number.";
-  }
-
-  if (!values.email.trim()) {
-    nextErrors.email = "Email Address is required.";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
-    nextErrors.email = "Enter a valid email address.";
-  }
-
-  if (!values.subject.trim()) nextErrors.subject = "Subject is required.";
-  if (!values.message.trim()) nextErrors.message = "Message is required.";
-
-  return nextErrors;
-};
-
 const ContactPage = () => {
-  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
-  const [errors, setErrors] = useState<ContactFormErrors>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const inputClasses = (field: keyof ContactFormData) =>
-    `w-full rounded-xl border bg-slate-50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 ${
-      errors[field]
-        ? "border-red-500 focus:ring-red-200"
-        : "border-border focus:ring-primary/30"
-    }`;
-
-  const handleChange =
-    (field: keyof ContactFormData) =>
-    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const value = e.target.value;
-      setFormData((prev) => ({ ...prev, [field]: value }));
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
-    };
-
-  const handleBlur = (field: keyof ContactFormData) => {
-    const validation = validateForm(formData);
-    setErrors((prev) => ({ ...prev, [field]: validation[field] }));
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const validation = validateForm(formData);
-    setErrors(validation);
-
-    if (Object.keys(validation).length > 0) {
-      setIsSubmitted(false);
-      return;
-    }
-
-    setIsSubmitted(true);
-    setFormData(initialFormData);
-  };
-
   return (
     <div className="pt-0 md:pt-20 bg-slate-100/60">
       <section className="relative bg-charcoal text-primary-foreground section-padding text-center overflow-hidden">
@@ -264,103 +184,27 @@ const ContactPage = () => {
                   <h3 className="text-2xl font-black text-foreground mb-6">
                     Send a Message
                   </h3>
-                  {isSubmitted && (
-                    <p className="mb-4 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-                      Message submitted successfully. Our team will contact you
-                      soon.
-                    </p>
-                  )}
-                  <form
-                    className="space-y-4"
-                    onSubmit={handleSubmit}
-                    noValidate
-                  >
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <input
-                          type="text"
-                          placeholder="Name"
-                          value={formData.name}
-                          onChange={handleChange("name")}
-                          onBlur={() => handleBlur("name")}
-                          className={inputClasses("name")}
-                        />
-                        {errors.name && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.name}
-                          </p>
-                        )}
-                      </div>
-                      <div>
-                        <input
-                          type="tel"
-                          placeholder="Phone"
-                          value={formData.phone}
-                          onChange={handleChange("phone")}
-                          onBlur={() => handleBlur("phone")}
-                          className={inputClasses("phone")}
-                        />
-                        {errors.phone && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.phone}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <input
-                          type="email"
-                          placeholder="Email Address"
-                          value={formData.email}
-                          onChange={handleChange("email")}
-                          onBlur={() => handleBlur("email")}
-                          className={inputClasses("email")}
-                        />
-                        {errors.email && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.email}
-                          </p>
-                        )}
-                      </div>
-                      <div>
-                        <input
-                          type="text"
-                          placeholder="Subject"
-                          value={formData.subject}
-                          onChange={handleChange("subject")}
-                          onBlur={() => handleBlur("subject")}
-                          className={inputClasses("subject")}
-                        />
-                        {errors.subject && (
-                          <p className="mt-1 text-sm text-red-500">
-                            {errors.subject}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                    <div>
-                      <textarea
-                        placeholder="Message"
-                        rows={6}
-                        value={formData.message}
-                        onChange={handleChange("message")}
-                        onBlur={() => handleBlur("message")}
-                        className={`${inputClasses("message")} resize-none`}
-                      />
-                      {errors.message && (
-                        <p className="mt-1 text-sm text-red-500">
-                          {errors.message}
-                        </p>
-                      )}
-                    </div>
-                    <button
-                      type="submit"
-                      className="w-full rounded-xl bg-primary px-6 py-3 font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-colors hover:bg-primary/90"
-                    >
-                      Submit
-                    </button>
-                  </form>
+                  <iframe
+                    src="/apply-form.html"
+                    title="Contact Form"
+                    className="w-full border-0 bg-transparent"
+                    style={{ minHeight: "640px" }}
+                    onLoad={(e) => {
+                      try {
+                        const iframe = e.currentTarget;
+                        const body = iframe.contentDocument?.body;
+                        if (body) {
+                          const resize = () => {
+                            iframe.style.height = `${body.scrollHeight}px`;
+                          };
+                          resize();
+                          new ResizeObserver(resize).observe(body);
+                        }
+                      } catch {
+                        // cross-origin — fixed minHeight is used
+                      }
+                    }}
+                  />
                 </div>
               </SectionFadeIn>
             </div>

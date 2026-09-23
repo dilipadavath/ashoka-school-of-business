@@ -227,17 +227,17 @@ const Navbar = () => {
         >
           <div className="container-wide flex items-center justify-between px-4">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-0 shrink-0">
+            <Link to="/" className="flex items-center gap-1.5 shrink-0 min-w-0">
               <img
                 src={logo}
                 alt="Ashoka School of Business"
-                className={`w-auto transition-all duration-300 ${scrolled ? "h-10" : "h-12"}`}
+                className={`w-auto shrink-0 transition-all duration-300 ${scrolled ? "h-10" : "h-12"}`}
               />
-              <div className="hidden sm:block">
-                <p className="font-display font-bold text-sm leading-tight text-foreground">
+              <div className="min-w-0">
+                <p className="font-display font-bold text-xs sm:text-sm leading-tight text-foreground whitespace-nowrap">
                   Ashoka School
                 </p>
-                <p className="font-display font-bold text-sm leading-tight text-primary">
+                <p className="font-display font-bold text-xs sm:text-sm leading-tight text-primary whitespace-nowrap">
                   of Business
                 </p>
               </div>
